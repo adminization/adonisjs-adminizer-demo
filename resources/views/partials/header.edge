@@ -1,0 +1,20 @@
+<header>
+  <div>
+    <div class="brand">
+      @!link({ route: 'home', text: 'Blog' })
+    </div>
+    <div>
+      <nav>
+        @if(auth.user)
+          @!avatar({ initials: auth.user.initials })
+          @form({ route: 'session.destroy', method: 'POST' })
+            @!button({ text: 'Logout' })
+          @end
+        @else
+          @!link({ route: 'new_account.create', text: 'Signup' })
+          @!link({ route: 'session.create', text: 'Login' })
+        @end
+      </nav>
+    </div>
+  </div>
+</header>

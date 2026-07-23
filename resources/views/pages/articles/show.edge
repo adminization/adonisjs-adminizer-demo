@@ -1,0 +1,37 @@
+@layout()
+  <article class="article">
+    @if(article.coverImage)
+      <img src="{{ article.coverImage }}" alt="" class="article-cover" />
+    @end
+
+    <div class="article-header">
+      @if(article.category)
+        <a href="{{ urlFor('categories.show', [article.category.slug]) }}" class="tag-badge">
+          {{ article.category.name }}
+        </a>
+      @end
+      <h1>{{ article.title }}</h1>
+      <div class="article-meta">
+        <span>{{ article.author.fullName ?? article.author.email }}</span>
+        <span>&middot;</span>
+        <span>{{ article.publishedAt.toFormat('dd LLL yyyy') }}</span>
+      </div>
+    </div>
+
+    <div class="article-content">
+      {{{ article.content }}}
+    </div>
+
+    @if(article.tags.length > 0)
+      <div class="blog-filters article-tags">
+        @each(tag in article.tags)
+          @!link({ route: 'tags.show', routeParams: [tag.slug], text: '#' + tag.name })
+        @end
+      </div>
+    @end
+
+    <p class="article-back">
+      @!link({ route: 'home', text: '← Back to all articles' })
+    </p>
+  </article>
+@end
