@@ -1,0 +1,1405 @@
+diff --git a/node_modules/adminizer/controllers/catalog/FrontendCatalogAdapter.d.ts b/node_modules/adminizer/controllers/catalog/FrontendCatalogAdapter.d.ts
+index 02a8172..e97fece 100644
+--- a/node_modules/adminizer/controllers/catalog/FrontendCatalogAdapter.d.ts
++++ b/node_modules/adminizer/controllers/catalog/FrontendCatalogAdapter.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractCatalog, Item } from "../../lib/catalog/AbstractCatalog";
++import { AbstractCatalog, Item } from "../../lib/catalog/AbstractCatalog.js";
+ interface NodeModel<TDataType> {
+     text: string;
+     droppable: boolean;
+diff --git a/node_modules/adminizer/controllers/catalog/FrontentCatalogAdapter.d.ts b/node_modules/adminizer/controllers/catalog/FrontentCatalogAdapter.d.ts
+index d78cb8b..ee6f1fc 100644
+--- a/node_modules/adminizer/controllers/catalog/FrontentCatalogAdapter.d.ts
++++ b/node_modules/adminizer/controllers/catalog/FrontentCatalogAdapter.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractCatalog, Item } from "../../lib/catalog/AbstractCatalog";
++import { AbstractCatalog, Item } from "../../lib/catalog/AbstractCatalog.js";
+ interface NodeModel<TDataType> {
+     text: string;
+     droppable: boolean;
+diff --git a/node_modules/adminizer/controllers/feedback/feedbackController.d.ts b/node_modules/adminizer/controllers/feedback/feedbackController.d.ts
+index 65e2868..7b9c2f6 100644
+--- a/node_modules/adminizer/controllers/feedback/feedbackController.d.ts
++++ b/node_modules/adminizer/controllers/feedback/feedbackController.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from '../../lib/Adminizer';
++import { Adminizer } from '../../lib/Adminizer.js';
+ export declare function bindFeedbackController(adminizer: Adminizer, middlewares: MiddlewareType[]): void;
+diff --git a/node_modules/adminizer/controllers/history-actions/HistoryController.d.ts b/node_modules/adminizer/controllers/history-actions/HistoryController.d.ts
+index 7d7a253..c43d978 100644
+--- a/node_modules/adminizer/controllers/history-actions/HistoryController.d.ts
++++ b/node_modules/adminizer/controllers/history-actions/HistoryController.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractHistoryAdapter } from "../../lib/history-actions/AbstractHistoryAdapter";
++import { AbstractHistoryAdapter } from "../../lib/history-actions/AbstractHistoryAdapter.js";
+ export declare class HistoryController {
+     static index(req: ReqType, res: ResType): Promise<any>;
+     static getAllModelHistory(req: ReqType, res: ResType): Promise<any>;
+diff --git a/node_modules/adminizer/controllers/media-manager/mediaManagerAdapter.d.ts b/node_modules/adminizer/controllers/media-manager/mediaManagerAdapter.d.ts
+index 4e2f344..e21494f 100644
+--- a/node_modules/adminizer/controllers/media-manager/mediaManagerAdapter.d.ts
++++ b/node_modules/adminizer/controllers/media-manager/mediaManagerAdapter.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractMediaManager } from "../../lib/media-manager/AbstractMediaManager";
++import { AbstractMediaManager } from "../../lib/media-manager/AbstractMediaManager.js";
+ export declare class MediaManagerAdapter {
+     private manager;
+     constructor(manager: AbstractMediaManager);
+diff --git a/node_modules/adminizer/helpers/accessRightsHelper.d.ts b/node_modules/adminizer/helpers/accessRightsHelper.d.ts
+index aa7cfab..4ac77c1 100644
+--- a/node_modules/adminizer/helpers/accessRightsHelper.d.ts
++++ b/node_modules/adminizer/helpers/accessRightsHelper.d.ts
+@@ -1,6 +1,6 @@
+-import { User } from "../models/User";
+-import { AccessRightsToken } from "../interfaces/types";
+-import { Adminizer } from "../lib/Adminizer";
++import { User } from "../models/User.js";
++import { AccessRightsToken } from "../interfaces/types.js";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare class AccessRightsHelper {
+     private _tokens;
+     adminizer: Adminizer;
+diff --git a/node_modules/adminizer/helpers/configHelper.d.ts b/node_modules/adminizer/helpers/configHelper.d.ts
+index 22b5187..54e1641 100644
+--- a/node_modules/adminizer/helpers/configHelper.d.ts
++++ b/node_modules/adminizer/helpers/configHelper.d.ts
+@@ -1,6 +1,6 @@
+-import { AdminpanelConfig, BaseFieldConfig } from "../interfaces/adminpanelConfig";
+-import { Attribute } from "../lib/model/AbstractModel";
+-import { Adminizer } from "../lib/Adminizer";
++import { AdminpanelConfig, BaseFieldConfig } from "../interfaces/adminpanelConfig.js";
++import { Attribute } from "../lib/model/AbstractModel.js";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare class ConfigHelper {
+     adminizer: Adminizer;
+     constructor(adminizer: Adminizer);
+diff --git a/node_modules/adminizer/helpers/controllerHelper.d.ts b/node_modules/adminizer/helpers/controllerHelper.d.ts
+index 99a7408..2f462d2 100644
+--- a/node_modules/adminizer/helpers/controllerHelper.d.ts
++++ b/node_modules/adminizer/helpers/controllerHelper.d.ts
+@@ -1,5 +1,5 @@
+-import { ModelResource } from "../interfaces/types";
+-import { ActionType, CreateUpdateConfig, ModelConfig } from "../interfaces/adminpanelConfig";
++import { ModelResource } from "../interfaces/types.js";
++import { ActionType, CreateUpdateConfig, ModelConfig } from "../interfaces/adminpanelConfig.js";
+ /**
+  * @deprecated need refactor actions
+  */
+diff --git a/node_modules/adminizer/helpers/fieldsHelper.d.ts b/node_modules/adminizer/helpers/fieldsHelper.d.ts
+index 74d1f1d..b25fe65 100644
+--- a/node_modules/adminizer/helpers/fieldsHelper.d.ts
++++ b/node_modules/adminizer/helpers/fieldsHelper.d.ts
+@@ -1,5 +1,5 @@
+-import { ActionType, BaseFieldConfig, FieldsTypes, ModelConfig } from "../interfaces/adminpanelConfig";
+-import { Attribute } from "../lib/model/AbstractModel";
++import { ActionType, BaseFieldConfig, FieldsTypes, ModelConfig } from "../interfaces/adminpanelConfig.js";
++import { Attribute } from "../lib/model/AbstractModel.js";
+ export type Field = {
+     config: BaseFieldConfig & {
+         /** @deprecated record should not be in config anymore */
+diff --git a/node_modules/adminizer/helpers/filterDatetimeHelper.d.ts b/node_modules/adminizer/helpers/filterDatetimeHelper.d.ts
+index 0daab9d..1b82df9 100644
+--- a/node_modules/adminizer/helpers/filterDatetimeHelper.d.ts
++++ b/node_modules/adminizer/helpers/filterDatetimeHelper.d.ts
+@@ -1,4 +1,4 @@
+-import { FilterCondition } from "../models/Filter";
++import { FilterCondition } from "../models/Filter.js";
+ export interface ConvertDatetimeConditionsOptions {
+     dropEmptyValues?: boolean;
+ }
+diff --git a/node_modules/adminizer/helpers/inertiaActionsHelper.d.ts b/node_modules/adminizer/helpers/inertiaActionsHelper.d.ts
+index 04f0836..65f24a3 100644
+--- a/node_modules/adminizer/helpers/inertiaActionsHelper.d.ts
++++ b/node_modules/adminizer/helpers/inertiaActionsHelper.d.ts
+@@ -1,5 +1,5 @@
+-import { ModelResource } from "../interfaces/types";
+-import { ActionType } from "../interfaces/adminpanelConfig";
++import { ModelResource } from "../interfaces/types.js";
++import { ActionType } from "../interfaces/adminpanelConfig.js";
+ export interface Actions {
+     link: string;
+     id: string;
+diff --git a/node_modules/adminizer/helpers/inertiaAddHelper.d.ts b/node_modules/adminizer/helpers/inertiaAddHelper.d.ts
+index ffa08ff..6bad61e 100644
+--- a/node_modules/adminizer/helpers/inertiaAddHelper.d.ts
++++ b/node_modules/adminizer/helpers/inertiaAddHelper.d.ts
+@@ -1,7 +1,7 @@
+-import { ModelResource, PropsField } from "../interfaces/types";
+-import { Actions } from "./inertiaActionsHelper";
+-import { Fields, Field } from "./fieldsHelper";
+-import { Control, ControlType } from "../lib/controls/Control";
++import { ModelResource, PropsField } from "../interfaces/types.js";
++import { Actions } from "./inertiaActionsHelper.js";
++import { Fields, Field } from "./fieldsHelper.js";
++import { Control, ControlType } from "../lib/controls/Control.js";
+ export type PropsFieldType = 'text' | 'number' | 'range' | 'week' | 'month' | 'email' | 'color' | 'time' | 'date' | 'datetime-local' | 'password' | 'select' | 'select-many' | 'association-many' | 'association' | 'textarea' | 'mediamanager' | 'single-file' | 'checkbox' | ControlType;
+ interface FieldProps extends Record<string | number | symbol, unknown> {
+     edit: boolean;
+diff --git a/node_modules/adminizer/helpers/inertiaGroupHelper.d.ts b/node_modules/adminizer/helpers/inertiaGroupHelper.d.ts
+index 4a1bd80..64f88aa 100644
+--- a/node_modules/adminizer/helpers/inertiaGroupHelper.d.ts
++++ b/node_modules/adminizer/helpers/inertiaGroupHelper.d.ts
+@@ -1,6 +1,6 @@
+-import { Group } from "../models/Group";
+-import { User } from "../models/User";
+-import { AccessRightsToken, ModelResource, PropsField } from "../interfaces/types";
++import { Group } from "../models/Group.js";
++import { User } from "../models/User.js";
++import { AccessRightsToken, ModelResource, PropsField } from "../interfaces/types.js";
+ interface groupedTokens {
+     header: string;
+     fields: PropsField[];
+diff --git a/node_modules/adminizer/helpers/inertiaListHelper.d.ts b/node_modules/adminizer/helpers/inertiaListHelper.d.ts
+index 0c95ae0..f2617bd 100644
+--- a/node_modules/adminizer/helpers/inertiaListHelper.d.ts
++++ b/node_modules/adminizer/helpers/inertiaListHelper.d.ts
+@@ -1,6 +1,6 @@
+-import { ModelResource } from "../interfaces/types";
+-import { Fields } from "./fieldsHelper";
+-import { Actions } from "./inertiaActionsHelper";
++import { ModelResource } from "../interfaces/types.js";
++import { Fields } from "./fieldsHelper.js";
++import { Actions } from "./inertiaActionsHelper.js";
+ interface listProps extends Record<string | number | symbol, unknown> {
+     actions: Actions[];
+     thActionsTitle: string;
+diff --git a/node_modules/adminizer/helpers/inertiaMenuHelper.d.ts b/node_modules/adminizer/helpers/inertiaMenuHelper.d.ts
+index d6e4cdf..6fc1979 100644
+--- a/node_modules/adminizer/helpers/inertiaMenuHelper.d.ts
++++ b/node_modules/adminizer/helpers/inertiaMenuHelper.d.ts
+@@ -1,5 +1,5 @@
+-import { Adminizer } from "../lib/Adminizer";
+-import { MenuItem } from "./menuHelper";
++import { Adminizer } from "../lib/Adminizer.js";
++import { MenuItem } from "./menuHelper.js";
+ export declare class InertiaMenuHelper {
+     private adminizer;
+     constructor(adminizer: Adminizer);
+diff --git a/node_modules/adminizer/helpers/inertiaUserHelper.d.ts b/node_modules/adminizer/helpers/inertiaUserHelper.d.ts
+index 9702808..576319d 100644
+--- a/node_modules/adminizer/helpers/inertiaUserHelper.d.ts
++++ b/node_modules/adminizer/helpers/inertiaUserHelper.d.ts
+@@ -1,6 +1,6 @@
+-import { Group } from "../models/Group";
+-import { User } from "../models/User";
+-import { ModelResource, PropsField } from "../interfaces/types";
++import { Group } from "../models/Group.js";
++import { User } from "../models/User.js";
++import { ModelResource, PropsField } from "../interfaces/types.js";
+ interface listProps extends Record<string | number | symbol, unknown> {
+     edit: boolean;
+     view: boolean;
+diff --git a/node_modules/adminizer/helpers/menuHelper.d.ts b/node_modules/adminizer/helpers/menuHelper.d.ts
+index bf03935..0c03cc4 100644
+--- a/node_modules/adminizer/helpers/menuHelper.d.ts
++++ b/node_modules/adminizer/helpers/menuHelper.d.ts
+@@ -3,8 +3,8 @@
+  *
+  * @constructor
+  */
+-import { User } from "../models/User";
+-import { ActionType, AdminpanelConfig, HrefConfig, ModelConfig } from "../interfaces/adminpanelConfig";
++import { User } from "../models/User.js";
++import { ActionType, AdminpanelConfig, HrefConfig, ModelConfig } from "../interfaces/adminpanelConfig.js";
+ export type MenuItem = {
+     link: string;
+     title: string;
+diff --git a/node_modules/adminizer/helpers/translationHelper.d.ts b/node_modules/adminizer/helpers/translationHelper.d.ts
+index 7566ca3..a59466c 100644
+--- a/node_modules/adminizer/helpers/translationHelper.d.ts
++++ b/node_modules/adminizer/helpers/translationHelper.d.ts
+@@ -1,5 +1,5 @@
+-import { Adminizer } from "../lib/Adminizer";
+-import { I18n } from "../lib/I18n";
++import { Adminizer } from "../lib/Adminizer.js";
++import { I18n } from "../lib/I18n.js";
+ export declare class TranslationHelper {
+     static loadTranslations(adminizer: Adminizer, translationsPath: string): void;
+     static translateProperties(i18n: I18n, object: any, fields: string[]): any;
+diff --git a/node_modules/adminizer/index.d.ts b/node_modules/adminizer/index.d.ts
+index c2869ec..e593d62 100644
+--- a/node_modules/adminizer/index.d.ts
++++ b/node_modules/adminizer/index.d.ts
+@@ -1,58 +1,58 @@
+-export * from "./helpers/configHelper";
+-export * from "./helpers/accessRightsHelper";
+-export * from "./lib/widgets/abstractAction";
+-export * from "./lib/widgets/abstractInfo";
+-export * from "./lib/widgets/abstractCustom";
+-export * from "./lib/widgets/abstractLink";
+-export * from "./lib/widgets/abstractWidgetBase";
+-export * from "./lib/widgets/abstractSwitch";
+-export * from "./lib/widgets/widgetHandler";
+-export * from "./lib/catalog/AbstractCatalog";
+-export * from "./lib/catalog/CatalogHandler";
+-export * from "./lib/catalog/CatalogTemplateComponentHandler";
+-export * from "./lib/media-manager/MediaManagerHandler";
+-export * from "./controllers/media-manager/mediaManagerAdapter";
+-export * from "./interfaces/adminpanelConfig";
+-export * from "./interfaces/types";
+-export * from "./interfaces/queryCriteria";
+-export * from "./interfaces/listQueryBuilder";
+-export * from "./interfaces/internalModelAccess";
+-export * from "./interfaces/MaaterialIcons";
+-export * from "./lib/model/AbstractModel";
+-export * from "./lib/model/InternalModelAccessFactory";
+-export * from "./system/systemModelContracts";
+-export * from "./lib/model/adapter/sequelize";
+-export * from "./lib/model/adapter/typeorm";
+-export * from "./lib/media-manager/AbstractMediaManager";
+-export * from "./lib/controls/Control";
+-export * from "./lib/controls/ControlsHandler";
+-export * from "./lib/Adminizer";
+-export * from "./lib/I18n";
+-export * from "./models/Group";
+-export * from "./models/User";
+-export * from "./models/Filter";
+-export * from "./models/FilterColumn";
+-export * from "./models/HistoryActions";
+-export * from "./models/Notification";
+-export * from "./models/UserNotification";
+-export * from "./models/MediaManagerAP";
+-export * from "./models/MediaManagerAssociationsAP";
+-export * from "./models/MediaManagerMetaAP";
+-export * from "./policies/authPolicies";
+-export * from "./lib/helper/jwt";
+-export * from "./lib/notifications/AbstractNotificationService";
+-export * from "./lib/POWCaptcha";
+-export * from "./lib/ai-assistant/AbstractAiModelService";
+-export * from "./lib/ai-assistant/AiAssistantHandler";
+-export * from "./lib/DataAccessor";
+-export * from "./lib/history-actions/AbstractHistoryAdapter";
+-export * from "./lib/filters/CustomFilterHandler";
+-export * from "./lib/feedback/AbstractFeedbackHandler";
+-export * from "./lib/feedback/FeedbackHandler";
+-export * from "./lib/app-manager/AdminizerApp";
+-export * from "./lib/app-manager/AppManager";
+-export * from "./lib/app-manager/ControllerHandler";
+-export * from "./lib/app-manager/AssetHandler";
+-export * from "./lib/app-manager/ConfigLayerHandler";
+-export * from "./lib/access-rights/AccessRightsHandler";
+-export * from "./lib/media-manager/helpers/MediaManagerHelper";
++export * from "./helpers/configHelper.js";
++export * from "./helpers/accessRightsHelper.js";
++export * from "./lib/widgets/abstractAction.js";
++export * from "./lib/widgets/abstractInfo.js";
++export * from "./lib/widgets/abstractCustom.js";
++export * from "./lib/widgets/abstractLink.js";
++export * from "./lib/widgets/abstractWidgetBase.js";
++export * from "./lib/widgets/abstractSwitch.js";
++export * from "./lib/widgets/widgetHandler.js";
++export * from "./lib/catalog/AbstractCatalog.js";
++export * from "./lib/catalog/CatalogHandler.js";
++export * from "./lib/catalog/CatalogTemplateComponentHandler.js";
++export * from "./lib/media-manager/MediaManagerHandler.js";
++export * from "./controllers/media-manager/mediaManagerAdapter.js";
++export * from "./interfaces/adminpanelConfig.js";
++export * from "./interfaces/types.js";
++export * from "./interfaces/queryCriteria.js";
++export * from "./interfaces/listQueryBuilder.js";
++export * from "./interfaces/internalModelAccess.js";
++export * from "./interfaces/MaaterialIcons.js";
++export * from "./lib/model/AbstractModel.js";
++export * from "./lib/model/InternalModelAccessFactory.js";
++export * from "./system/systemModelContracts.js";
++export * from "./lib/model/adapter/sequelize.js";
++export * from "./lib/model/adapter/typeorm.js";
++export * from "./lib/media-manager/AbstractMediaManager.js";
++export * from "./lib/controls/Control.js";
++export * from "./lib/controls/ControlsHandler.js";
++export * from "./lib/Adminizer.js";
++export * from "./lib/I18n.js";
++export * from "./models/Group.js";
++export * from "./models/User.js";
++export * from "./models/Filter.js";
++export * from "./models/FilterColumn.js";
++export * from "./models/HistoryActions.js";
++export * from "./models/Notification.js";
++export * from "./models/UserNotification.js";
++export * from "./models/MediaManagerAP.js";
++export * from "./models/MediaManagerAssociationsAP.js";
++export * from "./models/MediaManagerMetaAP.js";
++export * from "./policies/authPolicies.js";
++export * from "./lib/helper/jwt.js";
++export * from "./lib/notifications/AbstractNotificationService.js";
++export * from "./lib/POWCaptcha.js";
++export * from "./lib/ai-assistant/AbstractAiModelService.js";
++export * from "./lib/ai-assistant/AiAssistantHandler.js";
++export * from "./lib/DataAccessor.js";
++export * from "./lib/history-actions/AbstractHistoryAdapter.js";
++export * from "./lib/filters/CustomFilterHandler.js";
++export * from "./lib/feedback/AbstractFeedbackHandler.js";
++export * from "./lib/feedback/FeedbackHandler.js";
++export * from "./lib/app-manager/AdminizerApp.js";
++export * from "./lib/app-manager/AppManager.js";
++export * from "./lib/app-manager/ControllerHandler.js";
++export * from "./lib/app-manager/AssetHandler.js";
++export * from "./lib/app-manager/ConfigLayerHandler.js";
++export * from "./lib/access-rights/AccessRightsHandler.js";
++export * from "./lib/media-manager/helpers/MediaManagerHelper.js";
+diff --git a/node_modules/adminizer/interfaces/adminpanelConfig.d.ts b/node_modules/adminizer/interfaces/adminpanelConfig.d.ts
+index 2abcecf..c3352f3 100644
+--- a/node_modules/adminizer/interfaces/adminpanelConfig.d.ts
++++ b/node_modules/adminizer/interfaces/adminpanelConfig.d.ts
+@@ -1,9 +1,9 @@
+-import { MaterialIcon } from "./MaaterialIcons";
++import { MaterialIcon } from "./MaaterialIcons.js";
+ import { EditorOptions } from "@toast-ui/editor/types/editor";
+ import { GridSettings as HandsontableSettings } from "handsontable/settings";
+-import { Group } from "../models/Group";
+-import { User } from "../models/User";
+-import { InternalModelAccessMap } from "./internalModelAccess";
++import { Group } from "../models/Group.js";
++import { User } from "../models/User.js";
++import { InternalModelAccessMap } from "./internalModelAccess.js";
+ /**
+  * Controller function type - async function that handles requests and returns a response
+  */
+diff --git a/node_modules/adminizer/interfaces/global.d.ts b/node_modules/adminizer/interfaces/global.d.ts
+index c07e77b..2e69c17 100644
+--- a/node_modules/adminizer/interfaces/global.d.ts
++++ b/node_modules/adminizer/interfaces/global.d.ts
+@@ -1,11 +1,11 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ import { NextFunction, Request, Response } from "express";
+ import multer from "multer";
+-import { I18n } from "../lib/I18n";
+-import { Inertia } from "../lib/inertia/inertiaAdapter";
+-import { Flash } from "../lib/inertia/flash";
+-import { User } from "../models/User";
+-import { AppRuntime } from "../lib/app-manager/AdminizerApp";
++import { I18n } from "../lib/I18n.js";
++import { Inertia } from "../lib/inertia/inertiaAdapter.js";
++import { Flash } from "../lib/inertia/flash.js";
++import { User } from "../models/User.js";
++import { AppRuntime } from "../lib/app-manager/AdminizerApp.js";
+ declare global {
+     /** @deprecated use import from TS model decalration */
+     type ModelsAP = {
+diff --git a/node_modules/adminizer/interfaces/internalModelAccess.d.ts b/node_modules/adminizer/interfaces/internalModelAccess.d.ts
+index 298bb93..0592e81 100644
+--- a/node_modules/adminizer/interfaces/internalModelAccess.d.ts
++++ b/node_modules/adminizer/interfaces/internalModelAccess.d.ts
+@@ -1,4 +1,4 @@
+-import { IsAny, QueryCriteria } from "./queryCriteria";
++import { IsAny, QueryCriteria } from "./queryCriteria.js";
+ export type InternalModelAccessScope = string;
+ export type InternalModelAccessMap = Record<InternalModelAccessScope, string[]>;
+ export type InternalModelRelationId = string | number;
+diff --git a/node_modules/adminizer/interfaces/listQueryBuilder.d.ts b/node_modules/adminizer/interfaces/listQueryBuilder.d.ts
+index 201e310..d736182 100644
+--- a/node_modules/adminizer/interfaces/listQueryBuilder.d.ts
++++ b/node_modules/adminizer/interfaces/listQueryBuilder.d.ts
+@@ -1,4 +1,4 @@
+-import { FilterCondition } from "../models/Filter";
++import { FilterCondition } from "../models/Filter.js";
+ /**
+  * Input format for list/feed/export query builder.
+  * This is not the internal model query language.
+diff --git a/node_modules/adminizer/interfaces/types.d.ts b/node_modules/adminizer/interfaces/types.d.ts
+index ccf41df..29bd9ee 100644
+--- a/node_modules/adminizer/interfaces/types.d.ts
++++ b/node_modules/adminizer/interfaces/types.d.ts
+@@ -1,5 +1,5 @@
+-import { AbstractModel } from "../lib/model/AbstractModel";
+-import { ModelConfig } from "./adminpanelConfig";
++import { AbstractModel } from "../lib/model/AbstractModel.js";
++import { ModelConfig } from "./adminpanelConfig.js";
+ export interface ModelResource {
+     name: string;
+     config?: ModelConfig;
+diff --git a/node_modules/adminizer/lib/Adminizer.d.ts b/node_modules/adminizer/lib/Adminizer.d.ts
+index 1e51892..ec27571 100644
+--- a/node_modules/adminizer/lib/Adminizer.d.ts
++++ b/node_modules/adminizer/lib/Adminizer.d.ts
+@@ -1,32 +1,32 @@
+ import express, { Express } from "express";
+ import winston from "winston";
+ import EventEmitter from 'events';
+-import { AdminpanelConfig } from "../interfaces/adminpanelConfig";
+-import MiddlewareManager from "./MiddlewareManager";
+-import Router from "./../system/Router";
+-import { ModelHandler } from "./model/ModelHandler";
+-import { WidgetHandler } from "./widgets/widgetHandler";
+-import { AccessRightsHelper } from "../helpers/accessRightsHelper";
+-import { ConfigHelper } from "../helpers/configHelper";
+-import { I18n } from "./I18n";
+-import { AbstractAdapter } from "./model/AbstractModel";
++import { AdminpanelConfig } from "../interfaces/adminpanelConfig.js";
++import MiddlewareManager from "./MiddlewareManager.js";
++import Router from "./../system/Router.js";
++import { ModelHandler } from "./model/ModelHandler.js";
++import { WidgetHandler } from "./widgets/widgetHandler.js";
++import { AccessRightsHelper } from "../helpers/accessRightsHelper.js";
++import { ConfigHelper } from "../helpers/configHelper.js";
++import { I18n } from "./I18n.js";
++import { AbstractAdapter } from "./model/AbstractModel.js";
+ import type { ViteDevServer } from 'vite';
+-import { MenuHelper } from "../helpers/menuHelper";
+-import { ControlsHandler } from "./controls/ControlsHandler";
+-import { CatalogHandler } from "./catalog/CatalogHandler";
+-import { CatalogTemplateComponentHandler } from "./catalog/CatalogTemplateComponentHandler";
+-import { AiAssistantHandler } from './ai-assistant/AiAssistantHandler';
+-import { NotificationHandler } from './notifications/NotificationHandler';
+-import { INotification } from "../interfaces/types";
+-import { MediaManagerHandler } from "./media-manager/MediaManagerHandler";
+-import { HistoryHandler } from "./history-actions/HistoryHandler";
+-import { CustomFilterHandler } from "./filters/CustomFilterHandler";
+-import { FeedbackHandler } from "./feedback/FeedbackHandler";
+-import { AppManager } from "./app-manager/AppManager";
+-import { ControllerHandler } from "./app-manager/ControllerHandler";
+-import { AssetHandler } from "./app-manager/AssetHandler";
+-import { ConfigLayerHandler } from "./app-manager/ConfigLayerHandler";
+-import { AccessRightsHandler } from "./access-rights/AccessRightsHandler";
++import { MenuHelper } from "../helpers/menuHelper.js";
++import { ControlsHandler } from "./controls/ControlsHandler.js";
++import { CatalogHandler } from "./catalog/CatalogHandler.js";
++import { CatalogTemplateComponentHandler } from "./catalog/CatalogTemplateComponentHandler.js";
++import { AiAssistantHandler } from './ai-assistant/AiAssistantHandler.js';
++import { NotificationHandler } from './notifications/NotificationHandler.js';
++import { INotification } from "../interfaces/types.js";
++import { MediaManagerHandler } from "./media-manager/MediaManagerHandler.js";
++import { HistoryHandler } from "./history-actions/HistoryHandler.js";
++import { CustomFilterHandler } from "./filters/CustomFilterHandler.js";
++import { FeedbackHandler } from "./feedback/FeedbackHandler.js";
++import { AppManager } from "./app-manager/AppManager.js";
++import { ControllerHandler } from "./app-manager/ControllerHandler.js";
++import { AssetHandler } from "./app-manager/AssetHandler.js";
++import { ConfigLayerHandler } from "./app-manager/ConfigLayerHandler.js";
++import { AccessRightsHandler } from "./access-rights/AccessRightsHandler.js";
+ export declare function createAdminizerLogger(): winston.Logger;
+ export interface EmitAsyncOptions {
+     /**
+diff --git a/node_modules/adminizer/lib/DataAccessor.d.ts b/node_modules/adminizer/lib/DataAccessor.d.ts
+index c4b3669..654413b 100644
+--- a/node_modules/adminizer/lib/DataAccessor.d.ts
++++ b/node_modules/adminizer/lib/DataAccessor.d.ts
+@@ -1,12 +1,12 @@
+ /**
+  * The class manages the interaction between the user and the database entry, taking into account user permissions and the main config file settings.
+  */
+-import { ModelResource } from "../interfaces/types";
+-import { ActionType } from "../interfaces/adminpanelConfig";
+-import { Fields } from "../helpers/fieldsHelper";
+-import { Adminizer } from "./Adminizer";
+-import { User } from "../models/User";
+-import { QueryCriteria } from "../interfaces/queryCriteria";
++import { ModelResource } from "../interfaces/types.js";
++import { ActionType } from "../interfaces/adminpanelConfig.js";
++import { Fields } from "../helpers/fieldsHelper.js";
++import { Adminizer } from "./Adminizer.js";
++import { User } from "../models/User.js";
++import { QueryCriteria } from "../interfaces/queryCriteria.js";
+ export declare class DataAccessor {
+     readonly adminizer: Adminizer;
+     user: User;
+diff --git a/node_modules/adminizer/lib/MiddlewareManager.d.ts b/node_modules/adminizer/lib/MiddlewareManager.d.ts
+index 1e3c02a..4328080 100644
+--- a/node_modules/adminizer/lib/MiddlewareManager.d.ts
++++ b/node_modules/adminizer/lib/MiddlewareManager.d.ts
+@@ -1,4 +1,4 @@
+-import { Adminizer } from "./Adminizer";
++import { Adminizer } from "./Adminizer.js";
+ declare class MiddlewareManager {
+     private readonly _adminizer;
+     constructor(adminizer: Adminizer);
+diff --git a/node_modules/adminizer/lib/access-rights/AccessRightsHandler.d.ts b/node_modules/adminizer/lib/access-rights/AccessRightsHandler.d.ts
+index c67bb87..f48fc55 100644
+--- a/node_modules/adminizer/lib/access-rights/AccessRightsHandler.d.ts
++++ b/node_modules/adminizer/lib/access-rights/AccessRightsHandler.d.ts
+@@ -1,5 +1,5 @@
+-import type { AccessRightsToken } from "../../interfaces/types";
+-import type { Adminizer } from "../Adminizer";
++import type { AccessRightsToken } from "../../interfaces/types.js";
++import type { Adminizer } from "../Adminizer.js";
+ export interface AccessRightsRecord {
+     id: string;
+     appName: string;
+diff --git a/node_modules/adminizer/lib/ai-assistant/AbstractAiModelService.d.ts b/node_modules/adminizer/lib/ai-assistant/AbstractAiModelService.d.ts
+index 3e394df..ad7f018 100644
+--- a/node_modules/adminizer/lib/ai-assistant/AbstractAiModelService.d.ts
++++ b/node_modules/adminizer/lib/ai-assistant/AbstractAiModelService.d.ts
+@@ -1,5 +1,5 @@
+-import { AiAssistantMessage, AiAssistantModelInfo } from '../../interfaces/types';
+-import { User } from '../../models/User';
++import { AiAssistantMessage, AiAssistantModelInfo } from '../../interfaces/types.js';
++import { User } from '../../models/User.js';
+ /**
+  * Base class for AI assistant models. App modules register access rights
+  * and expose model metadata through this service.
+diff --git a/node_modules/adminizer/lib/ai-assistant/AiAssistantHandler.d.ts b/node_modules/adminizer/lib/ai-assistant/AiAssistantHandler.d.ts
+index 0b53556..9292b66 100644
+--- a/node_modules/adminizer/lib/ai-assistant/AiAssistantHandler.d.ts
++++ b/node_modules/adminizer/lib/ai-assistant/AiAssistantHandler.d.ts
+@@ -1,7 +1,7 @@
+-import { Adminizer } from '../Adminizer';
+-import { AbstractAiModelService } from './AbstractAiModelService';
+-import { AiAssistantMessage, AiAssistantModelInfo } from '../../interfaces/types';
+-import { User } from '../../models/User';
++import { Adminizer } from '../Adminizer.js';
++import { AbstractAiModelService } from './AbstractAiModelService.js';
++import { AiAssistantMessage, AiAssistantModelInfo } from '../../interfaces/types.js';
++import { User } from '../../models/User.js';
+ export declare class AiAssistantHandler {
+     private readonly adminizer;
+     private readonly models;
+diff --git a/node_modules/adminizer/lib/app-manager/AdminizerApp.d.ts b/node_modules/adminizer/lib/app-manager/AdminizerApp.d.ts
+index 138637d..a75e5e9 100644
+--- a/node_modules/adminizer/lib/app-manager/AdminizerApp.d.ts
++++ b/node_modules/adminizer/lib/app-manager/AdminizerApp.d.ts
+@@ -1,13 +1,13 @@
+-import type { ActionType, AdminpanelConfig, AdminpanelIcon, ModelConfig } from "../../interfaces/adminpanelConfig";
+-import type { AccessRightsToken, INotification, ModelResource } from "../../interfaces/types";
+-import type { AbstractCatalog } from "../catalog/AbstractCatalog";
+-import type { CatalogTemplateComponentResource } from "../catalog/CatalogTemplateComponentHandler";
+-import type { AppModelAccess } from "../model/ModelHandler";
+-import type { AbstractMediaManager } from "../media-manager/AbstractMediaManager";
+-import type { Config, ControlType } from "../controls/Control";
+-import type { User } from "../../models/User";
+-import type { DataAccessor } from "../DataAccessor";
+-import type { AbstractAiModelService } from "../ai-assistant/AbstractAiModelService";
++import type { ActionType, AdminpanelConfig, AdminpanelIcon, ModelConfig } from "../../interfaces/adminpanelConfig.js";
++import type { AccessRightsToken, INotification, ModelResource } from "../../interfaces/types.js";
++import type { AbstractCatalog } from "../catalog/AbstractCatalog.js";
++import type { CatalogTemplateComponentResource } from "../catalog/CatalogTemplateComponentHandler.js";
++import type { AppModelAccess } from "../model/ModelHandler.js";
++import type { AbstractMediaManager } from "../media-manager/AbstractMediaManager.js";
++import type { Config, ControlType } from "../controls/Control.js";
++import type { User } from "../../models/User.js";
++import type { DataAccessor } from "../DataAccessor.js";
++import type { AbstractAiModelService } from "../ai-assistant/AbstractAiModelService.js";
+ export type AppDisposer = () => void | Promise<void>;
+ export type AppEventName = string | symbol;
+ export type AppEventHandler<TPayload = any> = (payload: TPayload, runtime: AppRuntime) => void | Promise<void>;
+diff --git a/node_modules/adminizer/lib/app-manager/AppManager.d.ts b/node_modules/adminizer/lib/app-manager/AppManager.d.ts
+index 2347f31..a317d1b 100644
+--- a/node_modules/adminizer/lib/app-manager/AppManager.d.ts
++++ b/node_modules/adminizer/lib/app-manager/AppManager.d.ts
+@@ -1,5 +1,5 @@
+-import { Adminizer } from "../Adminizer";
+-import { AbstractAdminizerApp, AppRuntime, AppRuntimeAppState } from "./AdminizerApp";
++import { Adminizer } from "../Adminizer.js";
++import { AbstractAdminizerApp, AppRuntime, AppRuntimeAppState } from "./AdminizerApp.js";
+ export type AppState = AppRuntimeAppState;
+ export declare class AppManager {
+     private adminizer;
+diff --git a/node_modules/adminizer/lib/app-manager/AssetHandler.d.ts b/node_modules/adminizer/lib/app-manager/AssetHandler.d.ts
+index 427211d..03971e2 100644
+--- a/node_modules/adminizer/lib/app-manager/AssetHandler.d.ts
++++ b/node_modules/adminizer/lib/app-manager/AssetHandler.d.ts
+@@ -1,5 +1,5 @@
+-import type { Adminizer } from "../Adminizer";
+-import type { AppAsset } from "./AdminizerApp";
++import type { Adminizer } from "../Adminizer.js";
++import type { AppAsset } from "./AdminizerApp.js";
+ interface AssetRecord {
+     id: string;
+     appName: string;
+diff --git a/node_modules/adminizer/lib/app-manager/ConfigLayerHandler.d.ts b/node_modules/adminizer/lib/app-manager/ConfigLayerHandler.d.ts
+index 3332a10..f2232d2 100644
+--- a/node_modules/adminizer/lib/app-manager/ConfigLayerHandler.d.ts
++++ b/node_modules/adminizer/lib/app-manager/ConfigLayerHandler.d.ts
+@@ -1,5 +1,5 @@
+-import type { Adminizer } from "../Adminizer";
+-import type { AppConfigPatch } from "./AdminizerApp";
++import type { Adminizer } from "../Adminizer.js";
++import type { AppConfigPatch } from "./AdminizerApp.js";
+ export interface ConfigLayerRecord {
+     id: string;
+     appName: string;
+diff --git a/node_modules/adminizer/lib/app-manager/ControllerHandler.d.ts b/node_modules/adminizer/lib/app-manager/ControllerHandler.d.ts
+index ee5c39e..2d9b812 100644
+--- a/node_modules/adminizer/lib/app-manager/ControllerHandler.d.ts
++++ b/node_modules/adminizer/lib/app-manager/ControllerHandler.d.ts
+@@ -1,5 +1,5 @@
+-import type { Adminizer } from "../Adminizer";
+-import type { AppController, AppControllerMethod } from "./AdminizerApp";
++import type { Adminizer } from "../Adminizer.js";
++import type { AppController, AppControllerMethod } from "./AdminizerApp.js";
+ interface ControllerRecord {
+     id: string;
+     appName: string;
+diff --git a/node_modules/adminizer/lib/catalog/AbstractCatalog.d.ts b/node_modules/adminizer/lib/catalog/AbstractCatalog.d.ts
+index 1a5eb8f..13916d3 100644
+--- a/node_modules/adminizer/lib/catalog/AbstractCatalog.d.ts
++++ b/node_modules/adminizer/lib/catalog/AbstractCatalog.d.ts
+@@ -1,4 +1,4 @@
+-import { Adminizer } from "../Adminizer";
++import { Adminizer } from "../Adminizer.js";
+ export interface CatalogStorageServices {
+ }
+ /**
+diff --git a/node_modules/adminizer/lib/catalog/CatalogHandler.d.ts b/node_modules/adminizer/lib/catalog/CatalogHandler.d.ts
+index 65c6918..fb37f37 100644
+--- a/node_modules/adminizer/lib/catalog/CatalogHandler.d.ts
++++ b/node_modules/adminizer/lib/catalog/CatalogHandler.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractCatalog } from "./AbstractCatalog";
++import { AbstractCatalog } from "./AbstractCatalog.js";
+ export interface CatalogRecord {
+     id: string;
+     appName: string;
+diff --git a/node_modules/adminizer/lib/controls/ControlsHandler.d.ts b/node_modules/adminizer/lib/controls/ControlsHandler.d.ts
+index 4e5c62f..a2d3a8d 100644
+--- a/node_modules/adminizer/lib/controls/ControlsHandler.d.ts
++++ b/node_modules/adminizer/lib/controls/ControlsHandler.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType } from "./Control";
++import { Control, ControlType } from "./Control.js";
+ export declare class ControlsHandler {
+     private controls;
+     add(control: Control): void;
+diff --git a/node_modules/adminizer/lib/controls/codeEditor/MonacoEditor.d.ts b/node_modules/adminizer/lib/controls/codeEditor/MonacoEditor.d.ts
+index 08b7cd5..dac3a20 100644
+--- a/node_modules/adminizer/lib/controls/codeEditor/MonacoEditor.d.ts
++++ b/node_modules/adminizer/lib/controls/codeEditor/MonacoEditor.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType, Config, Path } from "../Control";
++import { Control, ControlType, Config, Path } from "../Control.js";
+ export declare class MonacoEditor implements Control {
+     readonly config: Config;
+     readonly name: string;
+diff --git a/node_modules/adminizer/lib/controls/geojsoneditor/GeoEditor.d.ts b/node_modules/adminizer/lib/controls/geojsoneditor/GeoEditor.d.ts
+index 53afd03..ebf94f4 100644
+--- a/node_modules/adminizer/lib/controls/geojsoneditor/GeoEditor.d.ts
++++ b/node_modules/adminizer/lib/controls/geojsoneditor/GeoEditor.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType, Config, Path } from "../Control";
++import { Control, ControlType, Config, Path } from "../Control.js";
+ export declare class GeoEditor implements Control {
+     readonly config: Config;
+     readonly name: string;
+diff --git a/node_modules/adminizer/lib/controls/jsoneditor/JsonEditor.d.ts b/node_modules/adminizer/lib/controls/jsoneditor/JsonEditor.d.ts
+index c91e6fe..40f67ff 100644
+--- a/node_modules/adminizer/lib/controls/jsoneditor/JsonEditor.d.ts
++++ b/node_modules/adminizer/lib/controls/jsoneditor/JsonEditor.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType, Path, Config } from "../Control";
++import { Control, ControlType, Path, Config } from "../Control.js";
+ export declare class JsonEditor implements Control {
+     readonly config: Record<string, string | string[] | object | number | boolean>;
+     readonly name: string;
+diff --git a/node_modules/adminizer/lib/controls/markdown/ToastUiEditor.d.ts b/node_modules/adminizer/lib/controls/markdown/ToastUiEditor.d.ts
+index dc4d927..494c7e1 100644
+--- a/node_modules/adminizer/lib/controls/markdown/ToastUiEditor.d.ts
++++ b/node_modules/adminizer/lib/controls/markdown/ToastUiEditor.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType, Path, Config } from "../Control";
++import { Control, ControlType, Path, Config } from "../Control.js";
+ export declare class ToastUiEditor implements Control {
+     readonly config: Record<string, string | string[] | object | number | boolean>;
+     readonly name: string;
+diff --git a/node_modules/adminizer/lib/controls/table/Handsontable.d.ts b/node_modules/adminizer/lib/controls/table/Handsontable.d.ts
+index f23de84..d5f7098 100644
+--- a/node_modules/adminizer/lib/controls/table/Handsontable.d.ts
++++ b/node_modules/adminizer/lib/controls/table/Handsontable.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType, Config, Path } from "../Control";
++import { Control, ControlType, Config, Path } from "../Control.js";
+ export declare class Handsontable implements Control {
+     readonly config: Config;
+     readonly name: string;
+diff --git a/node_modules/adminizer/lib/controls/wysiwyg/CKeditor.d.ts b/node_modules/adminizer/lib/controls/wysiwyg/CKeditor.d.ts
+index 0ad5c7e..e701421 100644
+--- a/node_modules/adminizer/lib/controls/wysiwyg/CKeditor.d.ts
++++ b/node_modules/adminizer/lib/controls/wysiwyg/CKeditor.d.ts
+@@ -1,4 +1,4 @@
+-import { Control, ControlType, Config, Path } from "../Control";
++import { Control, ControlType, Config, Path } from "../Control.js";
+ export declare class CKeditor implements Control {
+     readonly name: string;
+     readonly type: ControlType;
+diff --git a/node_modules/adminizer/lib/feedback/FeedbackHandler.d.ts b/node_modules/adminizer/lib/feedback/FeedbackHandler.d.ts
+index 094caa6..44a1b4e 100644
+--- a/node_modules/adminizer/lib/feedback/FeedbackHandler.d.ts
++++ b/node_modules/adminizer/lib/feedback/FeedbackHandler.d.ts
+@@ -1,5 +1,5 @@
+-import { Adminizer } from '../Adminizer';
+-import { AbstractFeedbackHandler } from './AbstractFeedbackHandler';
++import { Adminizer } from '../Adminizer.js';
++import { AbstractFeedbackHandler } from './AbstractFeedbackHandler.js';
+ export declare class FeedbackHandler {
+     private handler;
+     private adminizer;
+diff --git a/node_modules/adminizer/lib/filters/ConditionValidator.d.ts b/node_modules/adminizer/lib/filters/ConditionValidator.d.ts
+index 620abf2..c37941e 100644
+--- a/node_modules/adminizer/lib/filters/ConditionValidator.d.ts
++++ b/node_modules/adminizer/lib/filters/ConditionValidator.d.ts
+@@ -1,4 +1,4 @@
+-import { FilterCondition, FilterOperator } from '../../models/Filter';
++import { FilterCondition, FilterOperator } from '../../models/Filter.js';
+ /**
+  * Security event types for logging suspicious filter attempts
+  */
+diff --git a/node_modules/adminizer/lib/filters/FilterCustomFieldHandler.d.ts b/node_modules/adminizer/lib/filters/FilterCustomFieldHandler.d.ts
+index aa9a21e..0cf8d94 100644
+--- a/node_modules/adminizer/lib/filters/FilterCustomFieldHandler.d.ts
++++ b/node_modules/adminizer/lib/filters/FilterCustomFieldHandler.d.ts
+@@ -1,2 +1,2 @@
+-export * from './CustomFilterHandler';
+-export { default } from './CustomFilterHandler';
++export * from './CustomFilterHandler.js';
++export { default } from './CustomFilterHandler.js';
+diff --git a/node_modules/adminizer/lib/filters/FilterService.d.ts b/node_modules/adminizer/lib/filters/FilterService.d.ts
+index ddbefb4..6a2851e 100644
+--- a/node_modules/adminizer/lib/filters/FilterService.d.ts
++++ b/node_modules/adminizer/lib/filters/FilterService.d.ts
+@@ -1,7 +1,7 @@
+-import { Adminizer } from '../Adminizer';
+-import { Filter } from '../../models/Filter';
+-import { FilterColumn } from '../../models/FilterColumn';
+-import { User } from '../../models/User';
++import { Adminizer } from '../Adminizer.js';
++import { Filter } from '../../models/Filter.js';
++import { FilterColumn } from '../../models/FilterColumn.js';
++import { User } from '../../models/User.js';
+ /**
+  * FilterService - manages filter operations
+  *
+diff --git a/node_modules/adminizer/lib/filters/index.d.ts b/node_modules/adminizer/lib/filters/index.d.ts
+index 75b2144..abe20a9 100644
+--- a/node_modules/adminizer/lib/filters/index.d.ts
++++ b/node_modules/adminizer/lib/filters/index.d.ts
+@@ -1,6 +1,6 @@
+-export { FilterService, default as FilterServiceDefault } from './FilterService';
+-export { CustomFilterHandler, default as CustomFilterHandlerDefault } from './CustomFilterHandler';
+-export { AbstractCustomFilter } from './CustomFilterHandler';
+-export type { FilterCustomFieldCondition, RegisterOptions, FilterCustomFieldInputConfig, FilterCustomFieldInputDefinition, FilterCustomFieldInputType } from './CustomFilterHandler';
+-export { ConditionValidator, default as ConditionValidatorDefault } from './ConditionValidator';
+-export type { ValidationResult, ValidationError, FieldConfig, SecurityEvent, SecurityEventType } from './ConditionValidator';
++export { FilterService, default as FilterServiceDefault } from './FilterService.js';
++export { CustomFilterHandler, default as CustomFilterHandlerDefault } from './CustomFilterHandler.js';
++export { AbstractCustomFilter } from './CustomFilterHandler.js';
++export type { FilterCustomFieldCondition, RegisterOptions, FilterCustomFieldInputConfig, FilterCustomFieldInputDefinition, FilterCustomFieldInputType } from './CustomFilterHandler.js';
++export { ConditionValidator, default as ConditionValidatorDefault } from './ConditionValidator.js';
++export type { ValidationResult, ValidationError, FieldConfig, SecurityEvent, SecurityEventType } from './ConditionValidator.js';
+diff --git a/node_modules/adminizer/lib/history-actions/AbstractHistoryAdapter.d.ts b/node_modules/adminizer/lib/history-actions/AbstractHistoryAdapter.d.ts
+index 848bc6d..c908d80 100644
+--- a/node_modules/adminizer/lib/history-actions/AbstractHistoryAdapter.d.ts
++++ b/node_modules/adminizer/lib/history-actions/AbstractHistoryAdapter.d.ts
+@@ -1,9 +1,9 @@
+-import { HistoryActions } from "../../models/HistoryActions";
+-import { User } from "../../models/User";
+-import { Adminizer } from "../Adminizer";
+-import { Fields } from "../../helpers/fieldsHelper";
+-import { ActionType } from "../../interfaces/adminpanelConfig";
+-import { ModelResource } from "../../interfaces/types";
++import { HistoryActions } from "../../models/HistoryActions.js";
++import { User } from "../../models/User.js";
++import { Adminizer } from "../Adminizer.js";
++import { Fields } from "../../helpers/fieldsHelper.js";
++import { ActionType } from "../../interfaces/adminpanelConfig.js";
++import { ModelResource } from "../../interfaces/types.js";
+ /**
+  * Abstract base class for handling history operations in the AdminPanel.
+  * Provides common methods and structure for retrieving, filtering, and formatting historical data.
+diff --git a/node_modules/adminizer/lib/history-actions/DefaultHistoryAdapter.d.ts b/node_modules/adminizer/lib/history-actions/DefaultHistoryAdapter.d.ts
+index 940a29a..565e5b0 100644
+--- a/node_modules/adminizer/lib/history-actions/DefaultHistoryAdapter.d.ts
++++ b/node_modules/adminizer/lib/history-actions/DefaultHistoryAdapter.d.ts
+@@ -1,7 +1,7 @@
+-import { HistoryActions } from "../../models/HistoryActions";
+-import { User } from "../../models/User";
+-import { Adminizer } from "../Adminizer";
+-import { AbstractHistoryAdapter } from "./AbstractHistoryAdapter";
++import { HistoryActions } from "../../models/HistoryActions.js";
++import { User } from "../../models/User.js";
++import { Adminizer } from "../Adminizer.js";
++import { AbstractHistoryAdapter } from "./AbstractHistoryAdapter.js";
+ export declare class DefaultHistoryAdapter extends AbstractHistoryAdapter {
+     id: string;
+     model: string;
+diff --git a/node_modules/adminizer/lib/history-actions/HistoryHandler.d.ts b/node_modules/adminizer/lib/history-actions/HistoryHandler.d.ts
+index ff0617d..c75a42d 100644
+--- a/node_modules/adminizer/lib/history-actions/HistoryHandler.d.ts
++++ b/node_modules/adminizer/lib/history-actions/HistoryHandler.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractHistoryAdapter } from "./AbstractHistoryAdapter";
++import { AbstractHistoryAdapter } from "./AbstractHistoryAdapter.js";
+ export declare class HistoryHandler {
+     private adapters;
+     add(adapter: AbstractHistoryAdapter): void;
+diff --git a/node_modules/adminizer/lib/list-query-builder/ListQueryBuilder.d.ts b/node_modules/adminizer/lib/list-query-builder/ListQueryBuilder.d.ts
+index f05fcf6..cea6c28 100644
+--- a/node_modules/adminizer/lib/list-query-builder/ListQueryBuilder.d.ts
++++ b/node_modules/adminizer/lib/list-query-builder/ListQueryBuilder.d.ts
+@@ -1,10 +1,10 @@
+-import { Fields } from '../../helpers/fieldsHelper';
+-import { AbstractModel } from '../model/AbstractModel';
+-import { DataAccessor } from '../DataAccessor';
+-import { FilterOperator } from '../../models/Filter';
+-import { CustomFilterHandler } from '../filters/CustomFilterHandler';
+-import { ListQueryBuilderParams, ListQueryBuilderResult } from '../../interfaces/listQueryBuilder';
+-import { CriteriaWhere } from '../../interfaces/queryCriteria';
++import { Fields } from '../../helpers/fieldsHelper.js';
++import { AbstractModel } from '../model/AbstractModel.js';
++import { DataAccessor } from '../DataAccessor.js';
++import { FilterOperator } from '../../models/Filter.js';
++import { CustomFilterHandler } from '../filters/CustomFilterHandler.js';
++import { ListQueryBuilderParams, ListQueryBuilderResult } from '../../interfaces/listQueryBuilder.js';
++import { CriteriaWhere } from '../../interfaces/queryCriteria.js';
+ /**
+  * Security limits for filter conditions
+  */
+diff --git a/node_modules/adminizer/lib/media-manager/AbstractMediaManager.d.ts b/node_modules/adminizer/lib/media-manager/AbstractMediaManager.d.ts
+index c644212..2db3d86 100644
+--- a/node_modules/adminizer/lib/media-manager/AbstractMediaManager.d.ts
++++ b/node_modules/adminizer/lib/media-manager/AbstractMediaManager.d.ts
+@@ -1,5 +1,5 @@
+-import type { MediaManagerMetaAP } from "../../models/MediaManagerMetaAP";
+-import { Adminizer } from "../Adminizer";
++import type { MediaManagerMetaAP } from "../../models/MediaManagerMetaAP.js";
++import { Adminizer } from "../Adminizer.js";
+ export interface MediaManagerItem {
+     id?: string;
+     parent: string | null;
+diff --git a/node_modules/adminizer/lib/media-manager/MediaManagerHandler.d.ts b/node_modules/adminizer/lib/media-manager/MediaManagerHandler.d.ts
+index 8da0c7e..037f4fc 100644
+--- a/node_modules/adminizer/lib/media-manager/MediaManagerHandler.d.ts
++++ b/node_modules/adminizer/lib/media-manager/MediaManagerHandler.d.ts
+@@ -1,4 +1,4 @@
+-import { AbstractMediaManager } from "./AbstractMediaManager";
++import { AbstractMediaManager } from "./AbstractMediaManager.js";
+ export declare class MediaManagerHandler {
+     private managers;
+     add(manager: AbstractMediaManager): void;
+diff --git a/node_modules/adminizer/lib/media-manager/Thumb.d.ts b/node_modules/adminizer/lib/media-manager/Thumb.d.ts
+index 3438303..4ad9f39 100644
+--- a/node_modules/adminizer/lib/media-manager/Thumb.d.ts
++++ b/node_modules/adminizer/lib/media-manager/Thumb.d.ts
+@@ -1,4 +1,4 @@
+-import { Adminizer } from "../Adminizer";
++import { Adminizer } from "../Adminizer.js";
+ export declare class MediaManagerThumb {
+     static getThumb(id: string, managerId: string, adminizer: Adminizer): Promise<NonSharedBuffer>;
+ }
+diff --git a/node_modules/adminizer/lib/media-manager/helpers/MediaManagerHelper.d.ts b/node_modules/adminizer/lib/media-manager/helpers/MediaManagerHelper.d.ts
+index f72d3e4..03b985d 100644
+--- a/node_modules/adminizer/lib/media-manager/helpers/MediaManagerHelper.d.ts
++++ b/node_modules/adminizer/lib/media-manager/helpers/MediaManagerHelper.d.ts
+@@ -1,8 +1,8 @@
+-import { Fields } from "../../../helpers/fieldsHelper";
+-import { MediaManagerWidgetData, MediaManagerItem, MediaManagerWidgetItem, MediaManagerWidgetJSON } from "../AbstractMediaManager";
+-import { BaseFieldConfig } from "../../../interfaces/adminpanelConfig";
+-import { Adminizer } from "../../Adminizer";
+-import type { AppRuntime } from "../../app-manager/AdminizerApp";
++import { Fields } from "../../../helpers/fieldsHelper.js";
++import { MediaManagerWidgetData, MediaManagerItem, MediaManagerWidgetItem, MediaManagerWidgetJSON } from "../AbstractMediaManager.js";
++import { BaseFieldConfig } from "../../../interfaces/adminpanelConfig.js";
++import { Adminizer } from "../../Adminizer.js";
++import type { AppRuntime } from "../../app-manager/AdminizerApp.js";
+ type PostParams = Record<string, string | number | boolean | object | string[] | number[] | null>;
+ export declare function isMediaManagerFieldConfig(fieldConfig: BaseFieldConfig): boolean;
+ export declare function normalizeMediaManagerWidgetData(value: PostParams[string] | undefined, prop: string): MediaManagerWidgetData[];
+@@ -32,7 +32,7 @@ export declare function updateCurrentHistoryMediaManagerData(adminizer: Adminize
+  * @param model
+  * @param widgetName
+  */
+-export declare function getRelationsMediaManager(adminizer: Adminizer, data: MediaManagerWidgetJSON): Promise<import("../AbstractMediaManager").MediaManagerWidgetClientItem[]>;
++export declare function getRelationsMediaManager(adminizer: Adminizer, data: MediaManagerWidgetJSON): Promise<import("../AbstractMediaManager.js").MediaManagerWidgetClientItem[]>;
+ /**
+  * Delate Ralations
+  * @param adminizer
+diff --git a/node_modules/adminizer/lib/model/AbstractModel.d.ts b/node_modules/adminizer/lib/model/AbstractModel.d.ts
+index 21e5649..697dde4 100644
+--- a/node_modules/adminizer/lib/model/AbstractModel.d.ts
++++ b/node_modules/adminizer/lib/model/AbstractModel.d.ts
+@@ -1,6 +1,6 @@
+-import { DataAccessor } from "../DataAccessor";
+-import { QueryCriteria } from "../../interfaces/queryCriteria";
+-import { InternalModelRepository } from "../../interfaces/internalModelAccess";
++import { DataAccessor } from "../DataAccessor.js";
++import { QueryCriteria } from "../../interfaces/queryCriteria.js";
++import { InternalModelRepository } from "../../interfaces/internalModelAccess.js";
+ export interface Attribute {
+     type: 'association' | 'association-many' | 'number' | 'json' | 'string' | 'boolean' | 'ref';
+     required?: boolean;
+diff --git a/node_modules/adminizer/lib/model/InternalModelAccessFactory.d.ts b/node_modules/adminizer/lib/model/InternalModelAccessFactory.d.ts
+index 255f953..d259087 100644
+--- a/node_modules/adminizer/lib/model/InternalModelAccessFactory.d.ts
++++ b/node_modules/adminizer/lib/model/InternalModelAccessFactory.d.ts
+@@ -1,5 +1,5 @@
+-import { InternalModelAccessMap, InternalModelRepository } from "../../interfaces/internalModelAccess";
+-import { AbstractModel } from "./AbstractModel";
++import { InternalModelAccessMap, InternalModelRepository } from "../../interfaces/internalModelAccess.js";
++import { AbstractModel } from "./AbstractModel.js";
+ export declare const DEFAULT_INTERNAL_MODEL_ACCESS: InternalModelAccessMap;
+ export declare class InternalModelScope {
+     private readonly getModel;
+diff --git a/node_modules/adminizer/lib/model/ModelHandler.d.ts b/node_modules/adminizer/lib/model/ModelHandler.d.ts
+index 7f4fcf8..18384a6 100644
+--- a/node_modules/adminizer/lib/model/ModelHandler.d.ts
++++ b/node_modules/adminizer/lib/model/ModelHandler.d.ts
+@@ -1,6 +1,6 @@
+-import { AbstractModel } from "./AbstractModel";
+-import { InternalModelAccessMap, InternalModelRepository } from "../../interfaces/internalModelAccess";
+-import { InternalModelScope } from "./InternalModelAccessFactory";
++import { AbstractModel } from "./AbstractModel.js";
++import { InternalModelAccessMap, InternalModelRepository } from "../../interfaces/internalModelAccess.js";
++import { InternalModelScope } from "./InternalModelAccessFactory.js";
+ export interface AppModelAccessRecord {
+     id: string;
+     appName: string;
+diff --git a/node_modules/adminizer/lib/model/adapter/sequelize.d.ts b/node_modules/adminizer/lib/model/adapter/sequelize.d.ts
+index 0c89e48..db63a7a 100644
+--- a/node_modules/adminizer/lib/model/adapter/sequelize.d.ts
++++ b/node_modules/adminizer/lib/model/adapter/sequelize.d.ts
+@@ -1,6 +1,6 @@
+ import { Sequelize, ModelStatic } from "sequelize";
+-import { AbstractAdapter, AbstractAdapterOptions, AbstractModel, Attribute } from "../AbstractModel";
+-import { QueryCriteria } from "../../../interfaces/queryCriteria";
++import { AbstractAdapter, AbstractAdapterOptions, AbstractModel, Attribute } from "../AbstractModel.js";
++import { QueryCriteria } from "../../../interfaces/queryCriteria.js";
+ export declare function mapSequelizeToAdminizerAttributes(model: ModelStatic<any>): Record<string, Attribute>;
+ export declare class SequelizeModel<T> extends AbstractModel<T> {
+     private model;
+diff --git a/node_modules/adminizer/lib/model/adapter/typeorm.d.ts b/node_modules/adminizer/lib/model/adapter/typeorm.d.ts
+index 78a5a6f..37f4363 100644
+--- a/node_modules/adminizer/lib/model/adapter/typeorm.d.ts
++++ b/node_modules/adminizer/lib/model/adapter/typeorm.d.ts
+@@ -1,6 +1,6 @@
+ import { DataSource, EntityMetadata, EntitySchema, ObjectLiteral } from "typeorm";
+-import { AbstractAdapter, AbstractAdapterOptions, AbstractModel, ModelAttributes } from "../AbstractModel";
+-import { QueryCriteria } from "../../../interfaces/queryCriteria";
++import { AbstractAdapter, AbstractAdapterOptions, AbstractModel, ModelAttributes } from "../AbstractModel.js";
++import { QueryCriteria } from "../../../interfaces/queryCriteria.js";
+ /**
+  * Experimental TypeORM adapter.
+  *
+diff --git a/node_modules/adminizer/lib/model/internalModelRepository.d.ts b/node_modules/adminizer/lib/model/internalModelRepository.d.ts
+index 7ce5f41..61fbd1c 100644
+--- a/node_modules/adminizer/lib/model/internalModelRepository.d.ts
++++ b/node_modules/adminizer/lib/model/internalModelRepository.d.ts
+@@ -1,3 +1,3 @@
+-import { InternalModelRepository } from "../../interfaces/internalModelAccess";
+-import { AbstractModel } from "./AbstractModel";
++import { InternalModelRepository } from "../../interfaces/internalModelAccess.js";
++import { AbstractModel } from "./AbstractModel.js";
+ export declare function createInternalModelRepository<T>(modelName: string, model: AbstractModel<T>): InternalModelRepository<T>;
+diff --git a/node_modules/adminizer/lib/notifications/AbstractNotificationService.d.ts b/node_modules/adminizer/lib/notifications/AbstractNotificationService.d.ts
+index c993b27..09a6df0 100644
+--- a/node_modules/adminizer/lib/notifications/AbstractNotificationService.d.ts
++++ b/node_modules/adminizer/lib/notifications/AbstractNotificationService.d.ts
+@@ -1,8 +1,8 @@
+ import { EventEmitter } from 'events';
+-import { Adminizer } from '../Adminizer';
+-import { INotification, INotificationEvent } from '../../interfaces/types';
+-import { NotificationModel } from "../../models/Notification";
+-import { User } from "../../models/User";
++import { Adminizer } from '../Adminizer.js';
++import { INotification, INotificationEvent } from '../../interfaces/types.js';
++import { NotificationModel } from "../../models/Notification.js";
++import { User } from "../../models/User.js";
+ /**
+  * ░█████╗░██████╗░░██████╗████████╗██████╗░░█████╗░░█████╗░████████╗
+  * ██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝
+diff --git a/node_modules/adminizer/lib/notifications/GeneralNotificationService.d.ts b/node_modules/adminizer/lib/notifications/GeneralNotificationService.d.ts
+index 2cb6508..d8b6db9 100644
+--- a/node_modules/adminizer/lib/notifications/GeneralNotificationService.d.ts
++++ b/node_modules/adminizer/lib/notifications/GeneralNotificationService.d.ts
+@@ -1,5 +1,5 @@
+-import { AbstractNotificationService } from './AbstractNotificationService';
+-import { INotification } from '../../interfaces/types';
++import { AbstractNotificationService } from './AbstractNotificationService.js';
++import { INotification } from '../../interfaces/types.js';
+ export declare class GeneralNotificationService extends AbstractNotificationService {
+     readonly notificationClass = "general";
+     readonly displayName: string;
+diff --git a/node_modules/adminizer/lib/notifications/NotificationHandler.d.ts b/node_modules/adminizer/lib/notifications/NotificationHandler.d.ts
+index 8671f71..86216a7 100644
+--- a/node_modules/adminizer/lib/notifications/NotificationHandler.d.ts
++++ b/node_modules/adminizer/lib/notifications/NotificationHandler.d.ts
+@@ -1,6 +1,6 @@
+ import { EventEmitter } from 'events';
+-import { AbstractNotificationService } from "./AbstractNotificationService";
+-import { INotification } from '../../interfaces/types';
++import { AbstractNotificationService } from "./AbstractNotificationService.js";
++import { INotification } from '../../interfaces/types.js';
+ export declare class NotificationHandler extends EventEmitter {
+     private services;
+     constructor();
+diff --git a/node_modules/adminizer/lib/notifications/SystemNotificationService.d.ts b/node_modules/adminizer/lib/notifications/SystemNotificationService.d.ts
+index a894327..6af6323 100644
+--- a/node_modules/adminizer/lib/notifications/SystemNotificationService.d.ts
++++ b/node_modules/adminizer/lib/notifications/SystemNotificationService.d.ts
+@@ -1,5 +1,5 @@
+-import { AbstractNotificationService } from './AbstractNotificationService';
+-import { INotification } from '../../interfaces/types';
++import { AbstractNotificationService } from './AbstractNotificationService.js';
++import { INotification } from '../../interfaces/types.js';
+ export declare class SystemNotificationService extends AbstractNotificationService {
+     readonly notificationClass = "system";
+     readonly displayName: string;
+diff --git a/node_modules/adminizer/lib/requestProcessor.d.ts b/node_modules/adminizer/lib/requestProcessor.d.ts
+index 810f107..f59af4a 100644
+--- a/node_modules/adminizer/lib/requestProcessor.d.ts
++++ b/node_modules/adminizer/lib/requestProcessor.d.ts
+@@ -1,4 +1,4 @@
+-import { Fields } from "../helpers/fieldsHelper";
++import { Fields } from "../helpers/fieldsHelper.js";
+ type PostParams = Record<string, string | number | boolean | object | string[] | number[] | null>;
+ /**
+  * Default helper that will contain all methods
+diff --git a/node_modules/adminizer/lib/widgets/abstractAction.d.ts b/node_modules/adminizer/lib/widgets/abstractAction.d.ts
+index 166b8aa..c5e803f 100644
+--- a/node_modules/adminizer/lib/widgets/abstractAction.d.ts
++++ b/node_modules/adminizer/lib/widgets/abstractAction.d.ts
+@@ -1,4 +1,4 @@
+-import { BaseWidget } from "./abstractWidgetBase";
++import { BaseWidget } from "./abstractWidgetBase.js";
+ export declare abstract class ActionBase extends BaseWidget {
+     readonly widgetType = "action";
+     /** Widget background css color */
+diff --git a/node_modules/adminizer/lib/widgets/abstractCustom.d.ts b/node_modules/adminizer/lib/widgets/abstractCustom.d.ts
+index ed0a20e..49447a3 100644
+--- a/node_modules/adminizer/lib/widgets/abstractCustom.d.ts
++++ b/node_modules/adminizer/lib/widgets/abstractCustom.d.ts
+@@ -1,5 +1,5 @@
+-import { MaterialIcon } from "../../interfaces/MaaterialIcons";
+-import type { AppAsset } from "../app-manager/AdminizerApp";
++import { MaterialIcon } from "../../interfaces/MaaterialIcons.js";
++import type { AppAsset } from "../app-manager/AdminizerApp.js";
+ export declare abstract class CustomBase {
+     /** Widget unique id */
+     abstract readonly id: string;
+diff --git a/node_modules/adminizer/lib/widgets/abstractInfo.d.ts b/node_modules/adminizer/lib/widgets/abstractInfo.d.ts
+index 5c5cc93..8236bb9 100644
+--- a/node_modules/adminizer/lib/widgets/abstractInfo.d.ts
++++ b/node_modules/adminizer/lib/widgets/abstractInfo.d.ts
+@@ -1,4 +1,4 @@
+-import { BaseWidget } from "./abstractWidgetBase";
++import { BaseWidget } from "./abstractWidgetBase.js";
+ export interface WidgetInfoContext {
+     user?: ReqType["user"];
+ }
+diff --git a/node_modules/adminizer/lib/widgets/abstractLink.d.ts b/node_modules/adminizer/lib/widgets/abstractLink.d.ts
+index c67dc1a..d6af233 100644
+--- a/node_modules/adminizer/lib/widgets/abstractLink.d.ts
++++ b/node_modules/adminizer/lib/widgets/abstractLink.d.ts
+@@ -1,5 +1,5 @@
+-import { BaseWidget } from "./abstractWidgetBase";
+-import { MaterialIcon } from "../../interfaces/MaaterialIcons";
++import { BaseWidget } from "./abstractWidgetBase.js";
++import { MaterialIcon } from "../../interfaces/MaaterialIcons.js";
+ export interface Links {
+     name: string;
+     description: string;
+diff --git a/node_modules/adminizer/lib/widgets/abstractSwitch.d.ts b/node_modules/adminizer/lib/widgets/abstractSwitch.d.ts
+index bfccf0c..914a8f1 100644
+--- a/node_modules/adminizer/lib/widgets/abstractSwitch.d.ts
++++ b/node_modules/adminizer/lib/widgets/abstractSwitch.d.ts
+@@ -1,4 +1,4 @@
+-import { BaseWidget } from "./abstractWidgetBase";
++import { BaseWidget } from "./abstractWidgetBase.js";
+ export declare abstract class SwitchBase extends BaseWidget {
+     readonly widgetType = "switcher";
+     /** Widget background css color */
+diff --git a/node_modules/adminizer/lib/widgets/abstractWidgetBase.d.ts b/node_modules/adminizer/lib/widgets/abstractWidgetBase.d.ts
+index 6dc6efa..bb6836f 100644
+--- a/node_modules/adminizer/lib/widgets/abstractWidgetBase.d.ts
++++ b/node_modules/adminizer/lib/widgets/abstractWidgetBase.d.ts
+@@ -1,4 +1,4 @@
+-import { MaterialIcon } from "../../interfaces/MaaterialIcons";
++import { MaterialIcon } from "../../interfaces/MaaterialIcons.js";
+ export declare abstract class BaseWidget {
+     /** Widget unique id */
+     abstract readonly id: string;
+diff --git a/node_modules/adminizer/lib/widgets/widgetHandler.d.ts b/node_modules/adminizer/lib/widgets/widgetHandler.d.ts
+index d4f6a4a..5084bd8 100644
+--- a/node_modules/adminizer/lib/widgets/widgetHandler.d.ts
++++ b/node_modules/adminizer/lib/widgets/widgetHandler.d.ts
+@@ -1,12 +1,12 @@
+-import { SwitchBase } from "./abstractSwitch";
+-import { InfoBase } from "./abstractInfo";
+-import { ActionBase } from "./abstractAction";
+-import { LinkBase } from "./abstractLink";
+-import { CustomBase } from "./abstractCustom";
+-import { AdminpanelIcon } from "../../interfaces/adminpanelConfig";
+-import { Adminizer } from "../Adminizer";
+-import { User } from "../../models/User";
+-import { I18n } from "../I18n";
++import { SwitchBase } from "./abstractSwitch.js";
++import { InfoBase } from "./abstractInfo.js";
++import { ActionBase } from "./abstractAction.js";
++import { LinkBase } from "./abstractLink.js";
++import { CustomBase } from "./abstractCustom.js";
++import { AdminpanelIcon } from "../../interfaces/adminpanelConfig.js";
++import { Adminizer } from "../Adminizer.js";
++import { User } from "../../models/User.js";
++import { I18n } from "../I18n.js";
+ export type WidgetType = (SwitchBase | InfoBase | ActionBase | LinkBase | CustomBase);
+ export interface WidgetConfig {
+     id: string;
+diff --git a/node_modules/adminizer/models/Filter.d.ts b/node_modules/adminizer/models/Filter.d.ts
+index fa212ef..f584722 100644
+--- a/node_modules/adminizer/models/Filter.d.ts
++++ b/node_modules/adminizer/models/Filter.d.ts
+@@ -1,4 +1,4 @@
+-import type { FilterColumn } from "./FilterColumn";
++import type { FilterColumn } from "./FilterColumn.js";
+ /**
+  * Filter operators for query conditions
+  */
+diff --git a/node_modules/adminizer/models/FilterColumn.d.ts b/node_modules/adminizer/models/FilterColumn.d.ts
+index 4f51201..662eeb2 100644
+--- a/node_modules/adminizer/models/FilterColumn.d.ts
++++ b/node_modules/adminizer/models/FilterColumn.d.ts
+@@ -1,4 +1,4 @@
+-import type { Filter } from "./Filter";
++import type { Filter } from "./Filter.js";
+ /**
+  * FilterColumn interface for TypeScript
+  */
+diff --git a/node_modules/adminizer/models/Group.d.ts b/node_modules/adminizer/models/Group.d.ts
+index 6822292..43c4937 100644
+--- a/node_modules/adminizer/models/Group.d.ts
++++ b/node_modules/adminizer/models/Group.d.ts
+@@ -1,4 +1,4 @@
+-import type { User } from "./User";
++import type { User } from "./User.js";
+ export interface Group {
+     id?: number;
+     name: string;
+diff --git a/node_modules/adminizer/models/HistoryActions.d.ts b/node_modules/adminizer/models/HistoryActions.d.ts
+index 27078e2..cac8642 100644
+--- a/node_modules/adminizer/models/HistoryActions.d.ts
++++ b/node_modules/adminizer/models/HistoryActions.d.ts
+@@ -1,4 +1,4 @@
+-import type { User } from "./User";
++import type { User } from "./User.js";
+ export interface HistoryActions {
+     id?: number;
+     modelId: number | string;
+diff --git a/node_modules/adminizer/models/MediaManagerAP.d.ts b/node_modules/adminizer/models/MediaManagerAP.d.ts
+index cd97433..071baeb 100644
+--- a/node_modules/adminizer/models/MediaManagerAP.d.ts
++++ b/node_modules/adminizer/models/MediaManagerAP.d.ts
+@@ -1,5 +1,5 @@
+-import type { MediaManagerAssociationsAP } from "./MediaManagerAssociationsAP";
+-import type { MediaManagerMetaAP } from "./MediaManagerMetaAP";
++import type { MediaManagerAssociationsAP } from "./MediaManagerAssociationsAP.js";
++import type { MediaManagerMetaAP } from "./MediaManagerMetaAP.js";
+ export interface MediaManagerAP {
+     id: string;
+     parent?: MediaManagerAP;
+diff --git a/node_modules/adminizer/models/MediaManagerAssociationsAP.d.ts b/node_modules/adminizer/models/MediaManagerAssociationsAP.d.ts
+index 7523428..2a41f36 100644
+--- a/node_modules/adminizer/models/MediaManagerAssociationsAP.d.ts
++++ b/node_modules/adminizer/models/MediaManagerAssociationsAP.d.ts
+@@ -1,4 +1,4 @@
+-import type { MediaManagerAP } from "./MediaManagerAP";
++import type { MediaManagerAP } from "./MediaManagerAP.js";
+ export interface MediaManagerAssociationsAP {
+     id: string;
+     mediaManagerId?: string;
+diff --git a/node_modules/adminizer/models/MediaManagerMetaAP.d.ts b/node_modules/adminizer/models/MediaManagerMetaAP.d.ts
+index e283a9e..9d705c3 100644
+--- a/node_modules/adminizer/models/MediaManagerMetaAP.d.ts
++++ b/node_modules/adminizer/models/MediaManagerMetaAP.d.ts
+@@ -1,4 +1,4 @@
+-import type { MediaManagerAP } from "./MediaManagerAP";
++import type { MediaManagerAP } from "./MediaManagerAP.js";
+ export interface MediaManagerMetaAP {
+     id?: string;
+     key?: string;
+diff --git a/node_modules/adminizer/models/User.d.ts b/node_modules/adminizer/models/User.d.ts
+index 59107c8..52d0c6f 100644
+--- a/node_modules/adminizer/models/User.d.ts
++++ b/node_modules/adminizer/models/User.d.ts
+@@ -1,5 +1,5 @@
+-import type { WidgetConfig, WidgetsLayouts } from "../lib/widgets/widgetHandler";
+-import type { Group } from "./Group";
++import type { WidgetConfig, WidgetsLayouts } from "../lib/widgets/widgetHandler.js";
++import type { Group } from "./Group.js";
+ export interface User {
+     id?: number;
+     login: string;
+diff --git a/node_modules/adminizer/models/UserNotification.d.ts b/node_modules/adminizer/models/UserNotification.d.ts
+index 2dacd3f..deb6f26 100644
+--- a/node_modules/adminizer/models/UserNotification.d.ts
++++ b/node_modules/adminizer/models/UserNotification.d.ts
+@@ -1,4 +1,4 @@
+-import type { Notification } from "./Notification";
++import type { Notification } from "./Notification.js";
+ export interface UserNotification {
+     id: number;
+     userId: number;
+diff --git a/node_modules/adminizer/services/FeedService.d.ts b/node_modules/adminizer/services/FeedService.d.ts
+index 8029601..bbe8204 100644
+--- a/node_modules/adminizer/services/FeedService.d.ts
++++ b/node_modules/adminizer/services/FeedService.d.ts
+@@ -1,6 +1,6 @@
+-import { Adminizer } from "../lib/Adminizer";
+-import { Filter } from "../models/Filter";
+-import { User } from "../models/User";
++import { Adminizer } from "../lib/Adminizer.js";
++import { Filter } from "../models/Filter.js";
++import { User } from "../models/User.js";
+ /**
+  * Feed export format types
+  */
+diff --git a/node_modules/adminizer/system/Router.d.ts b/node_modules/adminizer/system/Router.d.ts
+index e7269eb..f6241d8 100644
+--- a/node_modules/adminizer/system/Router.d.ts
++++ b/node_modules/adminizer/system/Router.d.ts
+@@ -1,4 +1,4 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default class Router {
+     adminizer: Adminizer;
+     constructor(adminizer: Adminizer);
+diff --git a/node_modules/adminizer/system/bindAccessRights.d.ts b/node_modules/adminizer/system/bindAccessRights.d.ts
+index 9e534fd..285bd8c 100644
+--- a/node_modules/adminizer/system/bindAccessRights.d.ts
++++ b/node_modules/adminizer/system/bindAccessRights.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindAccessRights(adminizer: Adminizer): Promise<void>;
+diff --git a/node_modules/adminizer/system/bindAuthorization.d.ts b/node_modules/adminizer/system/bindAuthorization.d.ts
+index 46cb18b..fec438f 100644
+--- a/node_modules/adminizer/system/bindAuthorization.d.ts
++++ b/node_modules/adminizer/system/bindAuthorization.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindAuthorization(adminizer: Adminizer): Promise<void>;
+diff --git a/node_modules/adminizer/system/bindControls.d.ts b/node_modules/adminizer/system/bindControls.d.ts
+index 38204bf..19d25a0 100644
+--- a/node_modules/adminizer/system/bindControls.d.ts
++++ b/node_modules/adminizer/system/bindControls.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare function bindControls(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindCors.d.ts b/node_modules/adminizer/system/bindCors.d.ts
+index 9577acf..6ba02a0 100644
+--- a/node_modules/adminizer/system/bindCors.d.ts
++++ b/node_modules/adminizer/system/bindCors.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare function bindCors(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindCustomFilterHandlers.d.ts b/node_modules/adminizer/system/bindCustomFilterHandlers.d.ts
+index 8e07a6d..0a71c08 100644
+--- a/node_modules/adminizer/system/bindCustomFilterHandlers.d.ts
++++ b/node_modules/adminizer/system/bindCustomFilterHandlers.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindCustomFilterHandlers(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindDashboardWidgets.d.ts b/node_modules/adminizer/system/bindDashboardWidgets.d.ts
+index 63cb43e..731863e 100644
+--- a/node_modules/adminizer/system/bindDashboardWidgets.d.ts
++++ b/node_modules/adminizer/system/bindDashboardWidgets.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from '../lib/Adminizer';
++import { Adminizer } from '../lib/Adminizer.js';
+ export default function bindDashboardWidgets(adminizer: Adminizer): Promise<void>;
+diff --git a/node_modules/adminizer/system/bindDev.d.ts b/node_modules/adminizer/system/bindDev.d.ts
+index 321413e..bfb8556 100644
+--- a/node_modules/adminizer/system/bindDev.d.ts
++++ b/node_modules/adminizer/system/bindDev.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindDev(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindHistory.d.ts b/node_modules/adminizer/system/bindHistory.d.ts
+index e503b32..5c6d771 100644
+--- a/node_modules/adminizer/system/bindHistory.d.ts
++++ b/node_modules/adminizer/system/bindHistory.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindHistory(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindInertia.d.ts b/node_modules/adminizer/system/bindInertia.d.ts
+index da1126f..2ee1c98 100644
+--- a/node_modules/adminizer/system/bindInertia.d.ts
++++ b/node_modules/adminizer/system/bindInertia.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare function bindInertia(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindMediaManager.d.ts b/node_modules/adminizer/system/bindMediaManager.d.ts
+index 0a6ea7f..7f81cba 100644
+--- a/node_modules/adminizer/system/bindMediaManager.d.ts
++++ b/node_modules/adminizer/system/bindMediaManager.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindMediaManager(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindNotifications.d.ts b/node_modules/adminizer/system/bindNotifications.d.ts
+index 9533194..e7770c5 100644
+--- a/node_modules/adminizer/system/bindNotifications.d.ts
++++ b/node_modules/adminizer/system/bindNotifications.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from '../lib/Adminizer';
++import { Adminizer } from '../lib/Adminizer.js';
+ export declare function bindNotifications(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindReqFunctions.d.ts b/node_modules/adminizer/system/bindReqFunctions.d.ts
+index bab1a08..7b6c2aa 100644
+--- a/node_modules/adminizer/system/bindReqFunctions.d.ts
++++ b/node_modules/adminizer/system/bindReqFunctions.d.ts
+@@ -1,3 +1,3 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare function createDeprecatedAdminizerProxy(adminizer: Adminizer, warn?: (message: string) => void): Adminizer;
+ export default function bindReqFunctions(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/bindTranslations.d.ts b/node_modules/adminizer/system/bindTranslations.d.ts
+index e8d8037..f6eb45b 100644
+--- a/node_modules/adminizer/system/bindTranslations.d.ts
++++ b/node_modules/adminizer/system/bindTranslations.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export default function bindTranslations(adminizer: Adminizer): void;
+diff --git a/node_modules/adminizer/system/buildInternalModelAccess.d.ts b/node_modules/adminizer/system/buildInternalModelAccess.d.ts
+index 89069f1..affe553 100644
+--- a/node_modules/adminizer/system/buildInternalModelAccess.d.ts
++++ b/node_modules/adminizer/system/buildInternalModelAccess.d.ts
+@@ -1,4 +1,4 @@
+-import { AdminpanelConfig } from "../interfaces/adminpanelConfig";
+-import { InternalModelAccessMap } from "../interfaces/internalModelAccess";
+-import { ModelHandler } from "../lib/model/ModelHandler";
++import { AdminpanelConfig } from "../interfaces/adminpanelConfig.js";
++import { InternalModelAccessMap } from "../interfaces/internalModelAccess.js";
++import { ModelHandler } from "../lib/model/ModelHandler.js";
+ export declare function buildInternalModelAccess(config: AdminpanelConfig, modelHandler: ModelHandler): InternalModelAccessMap | undefined;
+diff --git a/node_modules/adminizer/system/defaults.d.ts b/node_modules/adminizer/system/defaults.d.ts
+index 4e3da1d..e77667b 100644
+--- a/node_modules/adminizer/system/defaults.d.ts
++++ b/node_modules/adminizer/system/defaults.d.ts
+@@ -1,4 +1,4 @@
+-import { AdminpanelConfig } from "../interfaces/adminpanelConfig";
++import { AdminpanelConfig } from "../interfaces/adminpanelConfig.js";
+ export declare function setDefaultConfig(config: AdminpanelConfig): void;
+ export declare function getDefaultConfig(): AdminpanelConfig;
+ export declare function defaults(): {
+diff --git a/node_modules/adminizer/system/routePolicies.d.ts b/node_modules/adminizer/system/routePolicies.d.ts
+index 4579238..0256f54 100644
+--- a/node_modules/adminizer/system/routePolicies.d.ts
++++ b/node_modules/adminizer/system/routePolicies.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare function bindWithMiddlewares(adminizer: Adminizer, middlewares: MiddlewareType[], action: MiddlewareType, policies?: MiddlewareType[]): MiddlewareType[];
+diff --git a/node_modules/adminizer/system/systemModelContracts.d.ts b/node_modules/adminizer/system/systemModelContracts.d.ts
+index 560a4df..1f8ea83 100644
+--- a/node_modules/adminizer/system/systemModelContracts.d.ts
++++ b/node_modules/adminizer/system/systemModelContracts.d.ts
+@@ -1,4 +1,4 @@
+-import type { AbstractModel, Attribute } from "../lib/model/AbstractModel";
++import type { AbstractModel, Attribute } from "../lib/model/AbstractModel.js";
+ export interface SystemModelAttributeContract {
+     type?: Attribute["type"];
+     required?: boolean;
+diff --git a/node_modules/adminizer/system/validateSystemModels.d.ts b/node_modules/adminizer/system/validateSystemModels.d.ts
+index a3f6562..6fd905a 100644
+--- a/node_modules/adminizer/system/validateSystemModels.d.ts
++++ b/node_modules/adminizer/system/validateSystemModels.d.ts
+@@ -1,2 +1,2 @@
+-import { Adminizer } from "../lib/Adminizer";
++import { Adminizer } from "../lib/Adminizer.js";
+ export declare function validateSystemModels(adminizer: Adminizer): void;

@@ -7,6 +7,198 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class AdminizerFilterColumnSchema extends BaseModel {
+  static $columns = ['createdAt', 'fieldName', 'filterId', 'id', 'order', 'updatedAt'] as const
+  $columns = AdminizerFilterColumnSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare fieldName: string
+  @column()
+  declare filterId: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare order: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class AdminizerFilterSchema extends BaseModel {
+  static $columns = ['apiEnabled', 'apiKey', 'color', 'conditions', 'createdAt', 'description', 'groupIds', 'icon', 'id', 'modelName', 'name', 'ownerId', 'sortDirection', 'sortField', 'updatedAt', 'version', 'visibility'] as const
+  $columns = AdminizerFilterSchema.$columns
+  @column()
+  declare apiEnabled: boolean
+  @column()
+  declare apiKey: string | null
+  @column()
+  declare color: string | null
+  @column()
+  declare conditions: any
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare description: string | null
+  @column()
+  declare groupIds: any | null
+  @column()
+  declare icon: string | null
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare modelName: string
+  @column()
+  declare name: string
+  @column()
+  declare ownerId: number
+  @column()
+  declare sortDirection: string | null
+  @column()
+  declare sortField: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare version: number
+  @column()
+  declare visibility: string
+}
+
+export class AdminizerGroupSchema extends BaseModel {
+  static $columns = ['createdAt', 'description', 'id', 'name', 'tokens', 'updatedAt'] as const
+  $columns = AdminizerGroupSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column()
+  declare tokens: any | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class AdminizerHistoryActionSchema extends BaseModel {
+  static $columns = ['action', 'createdAt', 'data', 'diff', 'id', 'isCurrent', 'modelId', 'modelName', 'preview', 'updatedAt', 'userId'] as const
+  $columns = AdminizerHistoryActionSchema.$columns
+  @column()
+  declare action: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare data: any | null
+  @column()
+  declare diff: any | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare isCurrent: boolean
+  @column()
+  declare modelId: string
+  @column()
+  declare modelName: string
+  @column()
+  declare preview: boolean
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number | null
+}
+
+export class AdminizerNotificationSchema extends BaseModel {
+  static $columns = ['channel', 'createdAt', 'id', 'message', 'metadata', 'notificationClass', 'title', 'updatedAt'] as const
+  $columns = AdminizerNotificationSchema.$columns
+  @column()
+  declare channel: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare message: string
+  @column()
+  declare metadata: any | null
+  @column()
+  declare notificationClass: string
+  @column()
+  declare title: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class AdminizerUserGroupSchema extends BaseModel {
+  static $columns = ['createdAt', 'groupId', 'id', 'updatedAt', 'userId'] as const
+  $columns = AdminizerUserGroupSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare groupId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
+}
+
+export class AdminizerUserNotificationSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'notificationId', 'read', 'updatedAt', 'userId'] as const
+  $columns = AdminizerUserNotificationSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare notificationId: number
+  @column()
+  declare read: boolean
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
+}
+
+export class AdminizerUserSchema extends BaseModel {
+  static $columns = ['apiKey', 'avatar', 'createdAt', 'email', 'expires', 'fullName', 'id', 'isActive', 'isAdministrator', 'isConfirmed', 'isDeleted', 'locale', 'login', 'passwordHashed', 'timezone', 'updatedAt', 'widgets'] as const
+  $columns = AdminizerUserSchema.$columns
+  @column()
+  declare apiKey: string | null
+  @column()
+  declare avatar: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare email: string | null
+  @column.dateTime()
+  declare expires: DateTime | null
+  @column()
+  declare fullName: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare isActive: boolean
+  @column()
+  declare isAdministrator: boolean
+  @column()
+  declare isConfirmed: boolean
+  @column()
+  declare isDeleted: boolean
+  @column()
+  declare locale: string | null
+  @column()
+  declare login: string
+  @column()
+  declare passwordHashed: string
+  @column()
+  declare timezone: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare widgets: any | null
+}
+
 export class ArticleTagSchema extends BaseModel {
   static $columns = ['articleId', 'tagId'] as const
   $columns = ArticleTagSchema.$columns
@@ -17,18 +209,7 @@ export class ArticleTagSchema extends BaseModel {
 }
 
 export class ArticleSchema extends BaseModel {
-  static $columns = [
-    'authorId',
-    'categoryId',
-    'content',
-    'coverImage',
-    'createdAt',
-    'id',
-    'publishedAt',
-    'slug',
-    'title',
-    'updatedAt',
-  ] as const
+  static $columns = ['authorId', 'categoryId', 'content', 'coverImage', 'createdAt', 'id', 'publishedAt', 'slug', 'title', 'updatedAt'] as const
   $columns = ArticleSchema.$columns
   @column()
   declare authorId: number

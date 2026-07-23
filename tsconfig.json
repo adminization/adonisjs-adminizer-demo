@@ -3,5 +3,6 @@
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "./build"
-  }
+  },
+  "exclude": ["adminizer", "build", "node_modules"]
 }
