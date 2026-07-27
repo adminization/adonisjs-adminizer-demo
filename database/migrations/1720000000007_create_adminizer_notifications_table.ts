@@ -1,0 +1,23 @@
+import { BaseSchema } from '@adonisjs/lucid/schema'
+
+export default class extends BaseSchema {
+  protected tableName = 'adminizer_notifications'
+
+  async up() {
+    this.schema.createTable(this.tableName, (table) => {
+      table.increments('id').notNullable()
+      table.string('title', 255).notNullable()
+      table.text('message').notNullable()
+      table.string('channel', 50).notNullable()
+      table.string('notification_class', 100).notNullable()
+      table.jsonb('metadata').nullable()
+
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
+    })
+  }
+
+  async down() {
+    this.schema.dropTable(this.tableName)
+  }
+}
