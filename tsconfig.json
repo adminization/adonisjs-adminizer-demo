@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    // Версия JS
+    "target": "ES2022",
+
+    // Система модулей (ESM через NodeNext)
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    // Типы
+    "lib": ["ES2022"],
+    "types": ["node"],
+
+    // Выходные файлы
+    "outDir": "./build",
+    "rootDir": "./src",
+
+    // Генерация .d.ts файлов
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    // Строгие проверки
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Для работы с ESM
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
+    // Пропуск проверки библиотек
+    "skipLibCheck": true,
+
+    // Для работы с путями
+    "forceConsistentCasingInFileNames": true,
+
+    // Включаем экспериментальные фичи
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "build", "src/**/*.d.ts"]
+}

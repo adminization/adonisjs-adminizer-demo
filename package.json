@@ -1,0 +1,20 @@
+{
+  "name": "adonisjs-adminizer-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["src"],
+  "description": "Custom AdonisJS module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "clean": "rm -rf build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@adonisjs/core": "^6.0.0"
+  }
+}
