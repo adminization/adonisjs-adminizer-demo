@@ -1,9 +1,9 @@
 import type { ApplicationService } from '@adonisjs/core/types'
-import {LucidAdapter} from "../lib/lucid_adapter.js";
-import {Adminizer} from "adminizer";
-import type { IncomingMessage, ServerResponse } from 'node:http'
+import { LucidAdapter } from '../lib/lucid_adapter.js'
+import { Adminizer } from 'adminizer'
 import config from '@adonisjs/core/services/config'
-import {AdminizerSystemConfig} from "../src/define_config.js";
+import { AdminizerSystemConfig } from '../src/define_config.js'
+import { configureAdminizerMiddleware } from '../middleware/adminizer_middleware.js'
 
 export default class AdminizerProvider {
 
@@ -11,7 +11,12 @@ export default class AdminizerProvider {
 
     register() {}
 
-    async boot() {}
+    async boot() {
+        // Register middleware as early as possible — before AdonisJS
+        // "freezes" the server-middleware stack inside its server.boot()
+        const server = await this.app.container.make('server')
+        server.use([() => import('../middleware/adminizer_middleware.js')])
+    }
 
     async start() {}
 
@@ -19,9 +24,7 @@ export default class AdminizerProvider {
         const adminizerConfig = config.get<AdminizerSystemConfig>('adminizer')
 
         if (!adminizerConfig) {
-            console.warn(
-                '[Adminizer] config/adminizer.ts not found, skipping initialization'
-            )
+            console.warn('[Adminizer] config/adminizer.ts not found, skipping initialization')
             return
         }
 
@@ -34,33 +37,11 @@ export default class AdminizerProvider {
 
         this.app.container.bindValue('adminizer', adminizer)
 
-        const routePrefix = adminizerConfig.routePrefix
-        const server = await this.app.container.make('server')
-        const nodeServer = server.getNodeServer()
-        if (!nodeServer) return
-
-        const adminizerMiddleware = adminizer.getMiddleware()
-
-        nodeServer.removeAllListeners('request')
-        nodeServer.on('request', (req: IncomingMessage, res: ServerResponse) => {
-            const url = req.url ?? ''
-            if (url === routePrefix || url.startsWith(`${routePrefix}/`)) {
-                adminizerMiddleware(req as any, res as any, () => {
-                    if (!res.headersSent) {
-                        res.statusCode = 404
-                        res.end('Not found')
-                    }
-                })
-                return
-            }
-            server.handle(req, res)
-        })
+        configureAdminizerMiddleware(adminizerConfig.routePrefix, adminizer.getMiddleware())
     }
 
     async shutdown() {
-
         console.log('[Adminizer] shutdown')
-
     }
 
 }
