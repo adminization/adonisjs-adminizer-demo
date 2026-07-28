@@ -6,7 +6,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import AdminizerUser from './adminizer_user.js'
 import AdminizerNotification from './adminizer_notification.js'
 
 export default class AdminizerUserNotification extends BaseModel {
@@ -15,13 +14,8 @@ export default class AdminizerUserNotification extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @column({ columnName: 'user_id' })
+  @column()
   declare userId: number
-
-  @belongsTo(() => AdminizerUser, {
-    foreignKey: 'userId',
-  })
-  declare user: BelongsTo<typeof AdminizerUser>
 
   @column({ columnName: 'notification_id' })
   declare notificationId: number

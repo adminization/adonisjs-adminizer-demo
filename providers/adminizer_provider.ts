@@ -32,6 +32,8 @@ export default class AdminizerProvider {
         const adminizer = new Adminizer([adapter])
         await adminizer.init(adminizerConfig.adminpanelConfig)
 
+        this.app.container.bindValue('adminizer', adminizer)
+
         const routePrefix = adminizerConfig.routePrefix
         const server = await this.app.container.make('server')
         const nodeServer = server.getNodeServer()
@@ -61,4 +63,10 @@ export default class AdminizerProvider {
 
     }
 
+}
+
+declare module '@adonisjs/core/types' {
+    export interface ContainerBindings {
+        adminizer: Adminizer
+    }
 }
