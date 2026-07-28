@@ -15,7 +15,6 @@ import AdminizerUserNotification from "#models/adminizer/adminizer_user_notifica
 const routePrefix = '/admin';
 
 export default defineConfig({
-    routePrefix: routePrefix,
     models: {
         AdminizerUser: {
             Model: AdminizerUser,

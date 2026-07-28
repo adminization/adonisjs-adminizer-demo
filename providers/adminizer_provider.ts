@@ -37,7 +37,7 @@ export default class AdminizerProvider {
 
         this.app.container.bindValue('adminizer', adminizer)
 
-        configureAdminizerMiddleware(adminizerConfig.routePrefix, adminizer.getMiddleware())
+        configureAdminizerMiddleware(adminizerConfig.adminpanelConfig.routePrefix, adminizer.getMiddleware())
     }
 
     async shutdown() {
