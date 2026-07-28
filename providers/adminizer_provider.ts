@@ -1,7 +1,6 @@
 import type { ApplicationService } from '@adonisjs/core/types'
 import {LucidAdapter} from "../lib/lucid_adapter.js";
 import {Adminizer} from "adminizer";
-import {adminConfig} from "../lib/config.js";
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import config from '@adonisjs/core/services/config'
 import {AdminizerSystemConfig} from "../src/define_config.js";
@@ -10,42 +9,30 @@ export default class AdminizerProvider {
 
     constructor(protected app: ApplicationService) {}
 
-    register() {
+    register() {}
 
-        console.log('[Adminizer] register')
+    async boot() {}
 
-    }
-
-    async boot() {
-
-        console.log('[Adminizer] boot')
-
-    }
-
-    async start() {
-
-        console.log('[Adminizer] start')
-
-    }
+    async start() {}
 
     async ready() {
-        const adminizerSystemConfig = config.get<AdminizerSystemConfig>('adminizer')
+        const adminizerConfig = config.get<AdminizerSystemConfig>('adminizer')
 
-        if (!adminizerSystemConfig) {
+        if (!adminizerConfig) {
             console.warn(
                 '[Adminizer] config/adminizer.ts not found, skipping initialization'
             )
             return
         }
 
-        const adapter = await LucidAdapter.create(adminizerSystemConfig.models, {
-            systemModels: adminizerSystemConfig.systemModels,
+        const adapter = await LucidAdapter.create(adminizerConfig.models, {
+            systemModels: adminizerConfig.systemModels,
         })
 
         const adminizer = new Adminizer([adapter])
-        await adminizer.init(adminConfig)
+        await adminizer.init(adminizerConfig.adminpanelConfig)
 
-        const routePrefix = adminConfig.routePrefix
+        const routePrefix = adminizerConfig.routePrefix
         const server = await this.app.container.make('server')
         const nodeServer = server.getNodeServer()
         if (!nodeServer) return

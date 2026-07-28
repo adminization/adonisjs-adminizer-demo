@@ -2,9 +2,19 @@
     "name": "adonisjs-adminizer",
     "version": "0.0.1",
     "type": "module",
+    "scripts": {
+        "copy:templates": "copyfiles \"stubs/**/*.stub\" --up=\"1\" build/stubs",
+        "build": "tsc && npm run copy:templates"
+    },
     "exports": {
-        ".": "./index.ts",
-        "./provider": "./providers/adminizer_provider.ts"
+        ".": "./index.js",
+        "./provider": "./providers/adminizer_provider.js"
+    },
+    "dependencies": {
+        "adminizer": "alpha"
+    },
+    "devDependencies": {
+        "copyfiles": "^2.4.1"
     },
     "peerDependencies": {
         "@adonisjs/core": "^8.0.0",

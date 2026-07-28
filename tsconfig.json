@@ -1,15 +1,9 @@
 {
     "extends": "@adonisjs/tsconfig/tsconfig.app.json",
-
     "compilerOptions": {
+        "declaration": true,
+        "sourceMap": false,
         "rootDir": ".",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "allowImportingTsExtensions": false,
-        "rewriteRelativeImportExtensions": true
-    },
-
-    "include": [
-        "**/*.ts"
-    ]
+        "outDir": "./build",
+    }
 }

@@ -12,6 +12,8 @@ import AdminizerHistoryAction from "#models/adminizer/adminizer_history_action";
 import AdminizerNotification from "#models/adminizer/adminizer_notification";
 import AdminizerUserNotification from "#models/adminizer/adminizer_user_notification";
 
+const routePrefix = '/admin';
+
 export default defineConfig({
     models: {
         AdminizerUser: {
@@ -46,4 +48,115 @@ export default defineConfig({
         Notification: 'AdminizerNotification',
         UserNotification: 'AdminizerUserNotification',
     },
+    adminpanelConfig: {
+        models: {},
+        list: {
+            defaultPageSize: 5
+        },
+        system: {
+            defaultORM: 'lucid',
+        },
+        mediamanager: {
+            fileStoragePath: '.tmp/public',
+            allowMIME: ['image/*', 'application/*', 'text/*', 'video/*'],
+            maxByteSize: 1024 * 1024 * 2, // 2 Mb
+            imageSizes: {
+                lg: {
+                    width: 750,
+                    height: 750
+                },
+                sm: {
+                    width: 350,
+                    height: 350
+                }
+            },
+        },
+        notifications: {
+            enabled: true,
+            enableGeneral: true,
+            initTab: 'general',
+        },
+        history: {
+            enabled: true,
+            adapter: "default",
+            // excludeModels: ["TestModels"] // Exclude specific models from history
+        },
+        cors: {
+            enabled: false,
+            origin: 'http://localhost:3000',
+            path: 'api/*'
+        },
+        aiAssistant: {
+            enabled: false,
+            defaultModel: 'openai-data',
+            models: ['openai-data', 'dummy'],
+        },
+        routePrefix: routePrefix,
+        auth: {
+            enable: true
+        },
+        registration: {
+            enable: true,
+            defaultUserGroup: "guest",
+            confirmationRequired: false
+        },
+        dashboard: true,
+        navbar: {
+            additionalLinks: []
+        },
+        sections: [
+            {
+                id: "0",
+                title: 'Website 1',
+                link: '#',
+                type: 'self',
+                icon: 'circle',
+                subItems: [
+                    {
+                        id: "0",
+                        title: 'Sub 1',
+                        type: 'blank',
+                        link: 'https://example.com',
+                        icon: 'language'
+                    }
+                ]
+            },
+            {
+                id: "1",
+                title: 'Website 2 Website 2 Website 2',
+                link: 'https://example.com',
+                type: 'blank',
+                icon: 'insert_link'
+            },
+            {
+                id: "2",
+                title: 'Website 3',
+                type: 'blank',
+                link: 'https://example.com',
+                icon: 'share'
+            }
+        ],
+        brand: {
+            link: {
+                id: "0",
+                type: 'blank',
+                title: 'Demo adminpanel',
+                link: 'https://example.com',
+            }
+        },
+        welcome: {
+            title: 'Demo AdonisJS adminpanel',
+            text: 'Demo text'
+        },
+        translation: {
+            locales: ['en'], // added this other locales
+            directory: 'custom-locales', // relative path to translations directory
+            //missingTranslationDirectory: 'custom-locales-missing',
+            defaultLocale: 'en'
+        },
+        showVersion: {
+            link: 'https://docs.adminizer.org',
+            hint: 'Adminizer documentation',
+        }
+    }
 })
