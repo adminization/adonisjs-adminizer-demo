@@ -126,6 +126,15 @@ export class LucidModelResource extends AbstractModel<any> {
         this.relationAliases = relationAliasCache.get(model) ?? {}
     }
 
+    private applyOutputAliases(json: Record<string, any>): Record<string, any> {
+        for (const [key, relationName] of Object.entries(this.relationAliases)) {
+            if (relationName in json) {
+                json[key] = json[relationName]
+            }
+        }
+        return json
+    }
+
     private resolveColumn(key: string): string {
         const attr = this.attributes[key]
         if (attr?.type === 'association' && attr.via) {
@@ -327,17 +336,17 @@ export class LucidModelResource extends AbstractModel<any> {
         const fresh = await this.buildQuery()
             .where(this.primaryKey, (instance as any)[this.primaryKey])
             .firstOrFail()
-        return fresh.toJSON()
+        return this.applyOutputAliases(fresh.toJSON())
     }
 
     protected async _findOne(criteria: QueryCriteria = {}) {
         const record = await this.buildQuery(criteria).first()
-        return record ? record.toJSON() : null
+        return record ? this.applyOutputAliases(record.toJSON()) : null
     }
 
     protected async _find(criteria: QueryCriteria = {}) {
         const records = await this.buildQuery(criteria)
-        return records.map((r: any) => r.toJSON())
+        return records.map((r: any) => this.applyOutputAliases(r.toJSON()))
     }
 
     protected async _updateOne(criteria: QueryCriteria, data: Record<string, any>) {
@@ -350,7 +359,7 @@ export class LucidModelResource extends AbstractModel<any> {
         const fresh = await this.buildQuery({populate: (criteria as any).populate})
             .where(this.primaryKey, (record as any)[this.primaryKey])
             .firstOrFail()
-        return fresh.toJSON()
+        return this.applyOutputAliases(fresh.toJSON())
     }
 
     protected async _update(criteria: QueryCriteria, data: Record<string, any>) {
@@ -361,7 +370,7 @@ export class LucidModelResource extends AbstractModel<any> {
             record.merge(plainData)
             await record.save()
             await this.assignManyAssociations(record, manyAssocData)
-            results.push(record.toJSON())
+            results.push(this.applyOutputAliases(record.toJSON()))
         }
         return results
     }
@@ -369,14 +378,14 @@ export class LucidModelResource extends AbstractModel<any> {
     protected async _destroyOne(criteria: QueryCriteria) {
         const record = await this.buildQuery(criteria).first()
         if (!record) return null
-        const json = record.toJSON()
+        const json = this.applyOutputAliases(record.toJSON())
         await record.delete()
         return json
     }
 
     protected async _destroy(criteria: QueryCriteria) {
         const records = await this.buildQuery(criteria)
-        const json = records.map((r: any) => r.toJSON())
+        const json = records.map((r: any) => this.applyOutputAliases(r.toJSON()))
         for (const record of records) {
             await record.delete()
         }
