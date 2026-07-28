@@ -1,6 +1,6 @@
 import type Configure from '@adonisjs/core/commands/configure'
-import { stubsRoot } from './stubs/main.js'
-import { readdir, access } from 'node:fs/promises'
+import {stubsRoot} from './stubs/main.js'
+import {readdir, access} from 'node:fs/promises'
 
 export async function configure(command: Configure) {
 
@@ -34,24 +34,54 @@ export async function configure(command: Configure) {
     }
 
     /**
-     * Migrations (order matters — user_groups depends on users & groups via FK)
+     * Migrations
      */
-    if (await migrationExists('create_adminizer_users')) {
-        command.logger.warning('Migration "create_adminizer_users" already exists, skipping')
+    if (await migrationExists('create_adminizer_users_table')) {
+        command.logger.warning('Migration "create_adminizer_users_table" already exists, skipping')
     } else {
-        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_users.stub', {})
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_users_table.stub', {})
     }
 
-    if (await migrationExists('create_adminizer_groups')) {
-        command.logger.warning('Migration "create_adminizer_groups" already exists, skipping')
+    if (await migrationExists('create_adminizer_groups_table')) {
+        command.logger.warning('Migration "create_adminizer_groups_table" already exists, skipping')
     } else {
-        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_groups.stub', {})
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_groups_table.stub', {})
     }
 
-    if (await migrationExists('create_adminizer_user_groups')) {
-        command.logger.warning('Migration "create_adminizer_user_groups" already exists, skipping')
+    if (await migrationExists('create_adminizer_user_groups_table')) {
+        command.logger.warning('Migration "create_adminizer_user_groups_table" already exists, skipping')
     } else {
-        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_user_groups.stub', {})
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_user_groups_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_filters_table')) {
+        command.logger.warning('Migration "create_adminizer_filters_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_filters_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_history_actions_table')) {
+        command.logger.warning('Migration "create_adminizer_history_actions_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_history_actions_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_filter_columns_table')) {
+        command.logger.warning('Migration "create_adminizer_filter_columns_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_filter_columns_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_notifications_table')) {
+        command.logger.warning('Migration "create_adminizer_notifications_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_notifications_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_user_notifications_table')) {
+        command.logger.warning('Migration "create_adminizer_user_notifications_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_user_notifications_table.stub', {})
     }
 
     /**
@@ -69,6 +99,41 @@ export async function configure(command: Configure) {
         command.logger.warning('Model "adminizer_group.ts" already exists, skipping')
     } else {
         await codemods.makeUsingStub(stubsRoot, 'models/adminizer_group.stub', {})
+    }
+
+    const filterModelPath = command.app.makePath('app/models/adminizer/adminizer_filter.ts')
+    if (await fileExists(filterModelPath)) {
+        command.logger.warning('Model "adminizer_filter.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_filter.stub', {})
+    }
+
+    const filterColumnModelPath = command.app.makePath('app/models/adminizer/adminizer_filter_column.ts')
+    if (await fileExists(filterColumnModelPath)) {
+        command.logger.warning('Model "adminizer_filter_column.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_filter_column.stub', {})
+    }
+
+    const historyActionModelPath = command.app.makePath('app/models/adminizer/adminizer_history_action.ts')
+    if (await fileExists(historyActionModelPath)) {
+        command.logger.warning('Model "adminizer_history_action.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_history_action.stub', {})
+    }
+
+    const notificationModelPath = command.app.makePath('app/models/adminizer/adminizer_notification.ts')
+    if (await fileExists(notificationModelPath)) {
+        command.logger.warning('Model "adminizer_notification.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_notification.stub', {})
+    }
+
+    const userNotificationModelPath = command.app.makePath('app/models/adminizer/adminizer_user_notification.ts')
+    if (await fileExists(userNotificationModelPath)) {
+        command.logger.warning('Model "adminizer_user_notification.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_user_notification.stub', {})
     }
 
     /**

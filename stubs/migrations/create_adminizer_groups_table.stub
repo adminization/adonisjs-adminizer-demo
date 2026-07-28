@@ -1,6 +1,6 @@
 {{{
   exports({
-    to: app.makePath('database/migrations', `${new Date().getTime()}create_adminizer_groups.ts`)
+    to: app.makePath('database/migrations', `${new Date().getTime()}create_adminizer_groups_table.ts`)
   })
 }}}
 

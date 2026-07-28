@@ -1,6 +1,6 @@
 {{{
   exports({
-    to: app.makePath('database/migrations', `${new Date().getTime()}_create_adminizer_user_groups.ts`)
+    to: app.makePath('database/migrations', `${new Date().getTime()}_create_adminizer_user_groups_table.ts`)
   })
 }}}
 import { BaseSchema } from '@adonisjs/lucid/schema'

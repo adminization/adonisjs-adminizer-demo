@@ -1,5 +1,5 @@
 import { AdminpanelConfig } from "adminizer";
-const routePrefix = 'admin';
+const routePrefix = '/admin';
 
 export const adminConfig: AdminpanelConfig = {
     list: {

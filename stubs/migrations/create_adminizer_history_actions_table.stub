@@ -1,3 +1,8 @@
+{{{
+  exports({
+    to: app.makePath('database/migrations', `${new Date().getTime()}_create_adminizer_history_actions_table.ts`)
+  })
+}}}
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
