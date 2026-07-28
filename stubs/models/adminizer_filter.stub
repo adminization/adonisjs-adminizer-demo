@@ -39,6 +39,10 @@ export default class AdminizerFilter extends BaseModel {
   @column({ columnName: 'model_name' })
   declare modelName: string
 
+  @column({
+     prepare: (value: any) => (value === null || value === undefined ? value : JSON.stringify(value)),
+     consume: (value: any) => (typeof value === 'string' ? JSON.parse(value) : value),
+  })
   @column()
   declare conditions: Record<string, any> | null
 

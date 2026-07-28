@@ -384,7 +384,8 @@ export class LucidModelResource extends AbstractModel<any> {
     }
 
     protected async _count(criteria: QueryCriteria = {}) {
-        const query = this.buildQuery({where: (criteria as any).where})
+        const query = this.Model.query()
+        this.applyWhere(query, (criteria as any).where)
         const result = await query.count('* as total').first()
         return Number((result as any)?.$extras?.total ?? 0)
     }

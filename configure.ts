@@ -13,6 +13,11 @@ export async function configure(command: Configure) {
         )
     })
 
+    await codemods.defineEnvVariables({
+        JWT_SECRET: 'adminizer_secret',
+        AP_PASSWORD_SALT: 'aadminizer_salt'
+    })
+
     const migrationsDir = command.app.makePath('database/migrations')
 
     async function migrationExists(pattern: string): Promise<boolean> {

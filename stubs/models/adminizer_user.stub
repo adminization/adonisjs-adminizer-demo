@@ -23,15 +23,19 @@ export default class AdminizerUser extends BaseModel {
   @column()
   declare email: string | null
 
-  @column({ serializeAs: null })
+  @column()
   declare passwordHashed: string
 
-  @column({ columnName: 'api_key', serializeAs: null })
+  @column({ columnName: 'api_key' })
   declare apiKey: string | null
 
   @column()
   declare avatar: string | null
 
+  @column({
+    prepare: (value: any) => (value === null || value === undefined ? value : JSON.stringify(value)),
+    consume: (value: any) => (typeof value === 'string' ? JSON.parse(value) : value),
+  })
   @column()
   declare widgets: Record<string, any> | null
 
