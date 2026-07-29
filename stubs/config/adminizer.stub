@@ -11,6 +11,9 @@ import AdminizerFilterColumn from "#models/adminizer/adminizer_filter_column";
 import AdminizerHistoryAction from "#models/adminizer/adminizer_history_action";
 import AdminizerNotification from "#models/adminizer/adminizer_notification";
 import AdminizerUserNotification from "#models/adminizer/adminizer_user_notification";
+import AdminizerMedia from '#models/adminizer/adminizer_media'
+import AdminizerMediaMeta from '#models/adminizer/adminizer_media_meta'
+import AdminizerMediaAssociation from '#models/adminizer/adminizer_media_association'
 
 const routePrefix = '/admin';
 
@@ -37,7 +40,10 @@ export default defineConfig({
                     sourceRelation: 'notification',
                 },
             },
-        }
+        },
+        AdminizerMedia: { Model: AdminizerMedia },
+        AdminizerMediaMeta: { Model: AdminizerMediaMeta },
+        AdminizerMediaAssociation: { Model: AdminizerMediaAssociation },
     },
     systemModels: {
         User: 'AdminizerUser',

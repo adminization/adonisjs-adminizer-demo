@@ -89,6 +89,24 @@ export async function configure(command: Configure) {
         await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_user_notifications_table.stub', {})
     }
 
+    if (await migrationExists('create_adminizer_media_table')) {
+        command.logger.warning('Migration "create_adminizer_media_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_media_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_media_meta_table')) {
+        command.logger.warning('Migration "create_adminizer_media_meta_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_media_meta_table.stub', {})
+    }
+
+    if (await migrationExists('create_adminizer_media_associations_table')) {
+        command.logger.warning('Migration "create_adminizer_media_associations_table" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'migrations/create_adminizer_media_associations_table.stub', {})
+    }
+
     /**
      * Models
      */
@@ -139,6 +157,27 @@ export async function configure(command: Configure) {
         command.logger.warning('Model "adminizer_user_notification.ts" already exists, skipping')
     } else {
         await codemods.makeUsingStub(stubsRoot, 'models/adminizer_user_notification.stub', {})
+    }
+
+    const mediaModelPath = command.app.makePath('app/models/adminizer/adminizer_media.ts')
+    if (await fileExists(mediaModelPath)) {
+        command.logger.warning('Model "adminizer_media.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_media.stub', {})
+    }
+
+    const mediaMetaModelPath = command.app.makePath('app/models/adminizer/adminizer_media_meta.ts')
+    if (await fileExists(mediaMetaModelPath)) {
+        command.logger.warning('Model "adminizer_media_meta.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_media_meta.stub', {})
+    }
+
+    const mediaAssocMetaModelPath = command.app.makePath('app/models/adminizer/adminizer_media_association.ts')
+    if (await fileExists(mediaAssocMetaModelPath)) {
+        command.logger.warning('Model "adminizer_media_association.ts" already exists, skipping')
+    } else {
+        await codemods.makeUsingStub(stubsRoot, 'models/adminizer_media_association.stub', {})
     }
 
     /**

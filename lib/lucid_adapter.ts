@@ -63,7 +63,7 @@ async function buildLucidAttributes(
         switch (relation.type) {
             case 'belongsTo':
             case 'hasOne': {
-                const foreignKey = (relation as any).foreignKey as string
+                const foreignKey = ((relation as any).foreignKey as string) ?? `${name}Id`
                 if (attributes[foreignKey]) {
                     attributes[foreignKey].primaryKeyForAssociation = true
                 }

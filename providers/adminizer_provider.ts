@@ -4,6 +4,7 @@ import { Adminizer } from 'adminizer'
 import config from '@adonisjs/core/services/config'
 import { AdminizerSystemConfig } from '../src/define_config.js'
 import { configureAdminizerMiddleware } from '../middleware/adminizer_middleware.js'
+import {MediaManagerApp} from "../apps/media-manager/MediaManagerApp.js";
 
 export default class AdminizerProvider {
 
@@ -34,6 +35,10 @@ export default class AdminizerProvider {
 
         const adminizer = new Adminizer([adapter])
         await adminizer.init(adminizerConfig.adminpanelConfig)
+
+        await adminizer.appManager.enable(new MediaManagerApp({
+            ...adminizerConfig.adminpanelConfig.mediamanager as any,
+        }));
 
         this.app.container.bindValue('adminizer', adminizer)
 
