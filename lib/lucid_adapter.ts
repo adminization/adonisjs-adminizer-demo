@@ -276,7 +276,13 @@ export class LucidModelResource extends AbstractModel<any> {
 
     private buildQuery(criteria: QueryCriteria = {}) {
         const query = this.Model.query()
-        const {where, select, populate, sort, limit, skip} = criteria as any
+        const {where, select, populate, sort, limit, skip, id} = criteria as any
+
+        // Handle primary key passed directly in criteria (e.g. from Adminizer's remove controller)
+        if (id !== undefined && id !== null) {
+            query.where(this.Model.primaryKey, id)
+        }
+
         this.applyWhere(query, where)
         if (select) {
             const fields = Array.isArray(select)
