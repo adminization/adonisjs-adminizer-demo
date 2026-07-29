@@ -18,6 +18,9 @@ import AdminizerMediaAssociation from '#models/adminizer/adminizer_media_associa
 const routePrefix = '/admin';
 
 export default defineConfig({
+    /**
+     * These are internal adminizer models, do not change them unless you know what you are doing
+     */
     models: {
         AdminizerUser: {
             Model: AdminizerUser,
@@ -44,7 +47,16 @@ export default defineConfig({
         AdminizerMedia: { Model: AdminizerMedia },
         AdminizerMediaMeta: { Model: AdminizerMediaMeta },
         AdminizerMediaAssociation: { Model: AdminizerMediaAssociation },
+        /**
+         * To make the adminizer aware of the project models, add them here as in the example below
+         */
+        //Category: {Model: Category},
+        //Test: {Model: Test},
+        //Example: {Model: Example},
     },
+    /**
+     * These are internal adminizer models, do not change them unless you know what you are doing
+     */
     systemModels: {
         User: 'AdminizerUser',
         Group: 'AdminizerGroup',
@@ -55,15 +67,24 @@ export default defineConfig({
         UserNotification: 'AdminizerUserNotification',
     },
     adminpanelConfig: {
+        /**
+         * See the documentation adonisjs-adminizer-provider
+         */
         models: {},
         list: {
             defaultPageSize: 5
         },
+        /**
+         *  Leave 'lucid', it's a built-in adapter in the adonisjs-adminizer-provider package
+         */
         system: {
             defaultORM: 'lucid',
         },
         mediamanager: {
-            fileStoragePath: 'tmp/public',
+            /**
+             *  Do not change the path unless you are sure of what you are doing.
+             */
+            fileStoragePath: 'public',
             allowMIME: ['image/*', 'application/*', 'text/*', 'video/*'],
             maxByteSize: 1024 * 1024 * 2, // 2 Mb
             imageSizes: {
@@ -86,6 +107,12 @@ export default defineConfig({
             enabled: true,
             adapter: "default",
             // excludeModels: ["TestModels"] // Exclude specific models from history
+        },
+        /**
+         * Experimental feature, may not work properly
+         */
+        filters: {
+            enabled: false
         },
         cors: {
             enabled: false,
@@ -110,46 +137,7 @@ export default defineConfig({
         navbar: {
             additionalLinks: []
         },
-        sections: [
-            {
-                id: "0",
-                title: 'Website 1',
-                link: '#',
-                type: 'self',
-                icon: 'circle',
-                subItems: [
-                    {
-                        id: "0",
-                        title: 'Sub 1',
-                        type: 'blank',
-                        link: 'https://example.com',
-                        icon: 'language'
-                    }
-                ]
-            },
-            {
-                id: "1",
-                title: 'Website 2 Website 2 Website 2',
-                link: 'https://example.com',
-                type: 'blank',
-                icon: 'insert_link'
-            },
-            {
-                id: "2",
-                title: 'Website 3',
-                type: 'blank',
-                link: 'https://example.com',
-                icon: 'share'
-            }
-        ],
-        brand: {
-            link: {
-                id: "0",
-                type: 'blank',
-                title: 'Demo adminpanel',
-                link: 'https://example.com',
-            }
-        },
+        sections: [],
         welcome: {
             title: 'Demo AdonisJS adminpanel',
             text: 'Demo text'
@@ -163,6 +151,12 @@ export default defineConfig({
         showVersion: {
             link: 'https://docs.adminizer.org',
             hint: 'Adminizer documentation',
+        },
+        /**
+         * Leave it false, this is an internal adminizer specific flag
+         */
+        bind: {
+            public: false
         }
     }
 })
