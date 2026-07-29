@@ -1,4 +1,4 @@
-import type {MediaManagerItem} from "../../../dist";
+import type {MediaManagerItem} from "adminizer";
 
 export interface MediaManagerMetaRecord {
     id?: string;

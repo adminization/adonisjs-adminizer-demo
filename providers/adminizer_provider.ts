@@ -41,7 +41,6 @@ export default class AdminizerProvider {
         }));
 
         this.app.container.bindValue('adminizer', adminizer)
-
         configureAdminizerMiddleware(adminizerConfig.adminpanelConfig.routePrefix, adminizer.getMiddleware())
     }
 

@@ -107,7 +107,7 @@ export class ImageItem extends File<MediaManagerItem> {
             tag: "origin",
             filename: originalName,
             url: this.publicUrl(filename),
-        });
+        }) as any;
         await this.createMeta(parent.id);
         await this.addImageSizeMeta(file.path, parent.id);
         if (Object.keys(this.imageSizes).length && file.mimetype !== "image/svg+xml") {
@@ -129,14 +129,14 @@ export class ImageItem extends File<MediaManagerItem> {
     }
 
     async getOrigin(id: string): Promise<string> {
-        return (await this.media().findOne({where: {id}})).path;
+        return (await this.media().findOne({where: {id}}) as any).path;
     }
 
     async getFile(id: number | string): Promise<MediaManagerItem> {
         const item = await this.media().findOne({
             where: {id: String(id)},
             populate: {variants: {sort: "createdAt DESC"}, meta: true},
-        });
+        }) as MediaManagerItem;
         if (item) {
             item.variants = await populateVariants(
                 this.runtime,
@@ -172,9 +172,10 @@ export class ImageItem extends File<MediaManagerItem> {
         group?: string,
         localeId?: string
     ): Promise<MediaManagerItem> {
+        //@ts-ignore
         const dimensions = sizeOf(fs.readFileSync(file.path));
         const item = await this.media().create({
-            parent: parent.id,
+            parent: parent.id as any,
             mimeType: file.mimetype,
             size: file.size,
             path: file.path,
@@ -183,8 +184,8 @@ export class ImageItem extends File<MediaManagerItem> {
             filename: parent.filename,
             url: this.publicUrl(filename),
         });
-        await this.addImageSizeMeta(file.path, item.id);
-        return this.media().findOne({where: {id: item.id}});
+        await this.addImageSizeMeta(file.path, item.id as any);
+        return this.media().findOne({where: {id: item.id}}) as any;
     }
 
     async delete(id: string): Promise<boolean> {
@@ -222,6 +223,7 @@ export class ImageItem extends File<MediaManagerItem> {
     private async addImageSizeMeta(filePath: string, id: string): Promise<void> {
         await this.meta().create({
             key: "imageSizes",
+            // @ts-ignore
             value: sizeOf(fs.readFileSync(filePath)),
             parent: id,
             isPublic: false,
@@ -234,6 +236,7 @@ export class ImageItem extends File<MediaManagerItem> {
         filename: string,
         group?: string
     ): Promise<void> {
+        // @ts-ignore
         const dimensions = sizeOf(fs.readFileSync(file.path));
         for (const [sizeName, target] of Object.entries(this.imageSizes)) {
             if (dimensions.width < target.width || dimensions.height < target.height) {
@@ -247,7 +250,7 @@ export class ImageItem extends File<MediaManagerItem> {
                 .resize({width: target.width, height: target.height})
                 .toFile(output);
             const variant = await this.media().create({
-                parent: parent.id,
+                parent: parent.id as any,
                 mimeType: parent.mimeType,
                 size: resized.size,
                 filename: parent.filename,
@@ -256,7 +259,7 @@ export class ImageItem extends File<MediaManagerItem> {
                 tag: `size:${sizeName}`,
                 url: this.publicUrl(variantName),
             });
-            await this.addImageSizeMeta(output, variant.id);
+            await this.addImageSizeMeta(output, variant.id as any);
         }
     }
 
@@ -287,7 +290,7 @@ export class TextItem extends ImageItem {
             filename: originalName,
             tag: "origin",
             url: this.publicUrl(filename),
-        });
+        }) as any;
         await this.createMeta(item.id);
         return [await this.getFile(item.id)];
     }
@@ -301,7 +304,7 @@ export class TextItem extends ImageItem {
     ): Promise<MediaManagerItem> {
         const variants = (parent.variants ?? []).filter((item) => !/^loc:/.test(item.tag));
         const item = await this.media().create({
-            parent: parent.id,
+            parent: parent.id as any,
             mimeType: file.mimetype,
             size: file.size,
             path: file.path,
@@ -310,7 +313,7 @@ export class TextItem extends ImageItem {
             filename: parent.filename,
             url: this.publicUrl(filename),
         });
-        return this.media().findOne({where: {id: item.id}});
+        return this.media().findOne({where: {id: item.id}}) as any;
     }
 }
 

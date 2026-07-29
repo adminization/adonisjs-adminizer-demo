@@ -63,7 +63,7 @@ export default defineConfig({
             defaultORM: 'lucid',
         },
         mediamanager: {
-            fileStoragePath: '.tmp/public',
+            fileStoragePath: 'tmp/public',
             allowMIME: ['image/*', 'application/*', 'text/*', 'video/*'],
             maxByteSize: 1024 * 1024 * 2, // 2 Mb
             imageSizes: {

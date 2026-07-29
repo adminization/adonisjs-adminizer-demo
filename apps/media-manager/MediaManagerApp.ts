@@ -29,7 +29,7 @@ export class MediaManagerApp extends AbstractAdminizerApp<DefaultMediaManagerApp
 
         ctx.accessRight({
             id: permissionToken,
-            name: this.config.id,
+            name: this.config.id as string,
             description: `Access to edit media-manager for ${this.config.id}`,
             department: "media-manager",
         });
@@ -45,8 +45,8 @@ export class MediaManagerApp extends AbstractAdminizerApp<DefaultMediaManagerApp
             factory: (runtime) =>
                 new DefaultMediaManager(
                     runtime,
-                    this.config.id,
-                    this.config.urlPathPrefix,
+                    this.config.id as string,
+                    this.config.urlPathPrefix as string,
                     this.config.fileStoragePath,
                     this.config.imageSizes ?? {}
                 ),

@@ -139,10 +139,10 @@ export class DefaultMediaManager extends AbstractMediaManager {
         return files
             .filter((association) => association.file)
             .map((association) => ({
-                id: association.file.id,
-                mimeType: association.file.mimeType,
-                filename: association.file.filename,
-                url: association.file.url,
+                id: association?.file?.id as string,
+                mimeType: association?.file?.mimeType as string,
+                filename: association?.file?.filename as string,
+                url: association?.file?.url,
                 variants: [] as MediaManagerItem[],
             }));
     }

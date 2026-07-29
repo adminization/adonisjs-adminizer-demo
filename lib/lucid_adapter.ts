@@ -331,10 +331,13 @@ export class LucidModelResource extends AbstractModel<any> {
 
     protected async _create(data: Record<string, any>) {
         const {plainData, manyAssocData} = this.splitAssociations(data)
+        if (plainData.id === undefined || plainData.id === null || plainData.id === '') {
+            delete plainData.id
+        }
         const instance = await this.Model.create(plainData)
         await this.assignManyAssociations(instance, manyAssocData)
         const fresh = await this.buildQuery()
-            .where(this.primaryKey, (instance as any)[this.primaryKey])
+            .where(this.primaryKey, (instance.$attributes as any)[this.primaryKey])
             .firstOrFail()
         return this.applyOutputAliases(fresh.toJSON())
     }
